@@ -1,0 +1,1687 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+
+resources: ~
+
+dag:
+  airflow_version: 2
+  initialize:
+    dag_id: openslr
+    default_args:
+      owner: "Google"
+      depends_on_past: False
+      start_date: '2022-06-10'
+    max_active_runs: 1
+    schedule_interval: "@monthly"
+    catchup: False
+    default_view: graph
+
+  tasks:
+    - operator: "BashOperator"
+      description: "create folders for uploading openslr data to GCS"
+      args:
+        task_id: "create_folder"
+        bash_command: |
+          mkdir -p $data_dir/openslr
+          declare -a folder_name_array=('SLR1	SLR2	SLR3	SLR4	SLR5	SLR6	SLR7	SLR8	SLR9	SLR10	SLR11	SLR12	SLR13	SLR14	SLR15	SLR16	SLR17	SLR18	SLR19	SLR20	SLR21	SLR22	SLR23	SLR24	SLR25	SLR26	SLR27	SLR28	SLR29	SLR30	SLR31	SLR32	SLR33	SLR34	SLR35	SLR36	SLR37	SLR38	SLR39	SLR40	SLR41	SLR42	SLR43	SLR44	SLR45	SLR46	SLR47	SLR48	SLR49	SLR50	SLR51	SLR52	SLR53	SLR54	SLR55	SLR56	SLR57	SLR58	SLR59	SLR60	SLR61	SLR62	SLR63	SLR64	SLR65	SLR66	SLR67	SLR68	SLR69	SLR70	SLR71	SLR72	SLR73	SLR74	SLR75	SLR76	SLR77	SLR78	SLR79	SLR80	SLR81	SLR82	SLR83	SLR84	SLR85	SLR86	SLR87	SLR88	SLR89	SLR92	SLR93	SLR94	SLR95	SLR96	SLR97	SLR98	SLR99	SLR100	SLR101	SLR102	SLR103	SLR104	SLR105	SLR106	SLR107	SLR108	SLR109	SLR110	SLR111	SLR112	SLR113	SLR114	SLR115	SLR116	SLR117	SLR118	SLR119	SLR120	SLR122	SLR123	SLR124	SLR125	SLR126	SLR127	SLR128	SLR129')
+          for val in ${folder_name_array[*]};
+          do
+            mkdir -p $data_dir/openslr/$val
+          done
+        env:
+          data_dir: /home/airflow/gcs/data/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch1"
+        bash_command: |
+          wget https://www.openslr.org/resources/1/waves_yesno.tar.gz -O $openslr_data_dir/SLR1/waves_yesno.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.3.2.tar.gz -O $openslr_data_dir/SLR2/openfst-1.3.2.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.3.3.tar.gz -O $openslr_data_dir/SLR2/openfst-1.3.3.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.3.4.tar.gz -O $openslr_data_dir/SLR2/openfst-1.3.4.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.4.1.tar.gz -O $openslr_data_dir/SLR2/openfst-1.4.1.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch2"
+        bash_command: |
+          wget https://www.openslr.org/resources/2/openfst-1.5.4.tar.gz -O $openslr_data_dir/SLR2/openfst-1.5.4.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.6.2.tar.gz -O $openslr_data_dir/SLR2/openfst-1.6.2.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.6.5.tar.gz -O $openslr_data_dir/SLR2/openfst-1.6.5.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.6.7.tar.gz -O $openslr_data_dir/SLR2/openfst-1.6.7.tar.gz
+          wget https://www.openslr.org/resources/2/openfst-1.7.2.tar.gz -O $openslr_data_dir/SLR2/openfst-1.7.2.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch3"
+        bash_command: |
+          wget https://www.openslr.org/resources/2/openfst-1.7.9.tar.gz -O $openslr_data_dir/SLR2/openfst-1.7.9.tar.gz
+          wget https://www.openslr.org/resources/3/sph2pipe_v2.5.tar.gz -O $openslr_data_dir/SLR3/sph2pipe_v2.5.tar.gz
+          wget https://www.openslr.org/resources/4/sctk-2.4.0-20091110-0958.tar.bz2 -O $openslr_data_dir/SLR4/sctk-2.4.0-20091110-0958.tar.bz2
+          wget https://www.openslr.org/resources/4/sctk-2.4.0-20091110-0958.tar.gz -O $openslr_data_dir/SLR4/sctk-2.4.0-20091110-0958.tar.gz
+          wget https://www.openslr.org/resources/4/sctk-2.4.8-20130429-2145.tar.bz2 -O $openslr_data_dir/SLR4/sctk-2.4.8-20130429-2145.tar.bz2
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch4"
+        bash_command: |
+          wget https://www.openslr.org/resources/4/sctk-2.4.9-20141015-1634Z.tar.bz2 -O $openslr_data_dir/SLR4/sctk-2.4.9-20141015-1634Z.tar.bz2
+          wget https://www.openslr.org/resources/4/sctk-2.4.10-20151007-1312Z.tar.bz2 -O $openslr_data_dir/SLR4/sctk-2.4.10-20151007-1312Z.tar.bz2
+          wget https://www.openslr.org/resources/5/switchboard_word_alignments.tar.gz -O $openslr_data_dir/SLR5/switchboard_word_alignments.tar.gz
+          wget https://www.openslr.org/resources/5/sw-ms98-dict.text -O $openslr_data_dir/SLR5/sw-ms98-dict.text
+          wget https://www.openslr.org/resources/6/data_voip_cs.tgz -O $openslr_data_dir/SLR6/data_voip_cs.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch5"
+        bash_command: |
+          wget https://www.openslr.org/resources/6/data_voip_en.tgz -O $openslr_data_dir/SLR6/data_voip_en.tgz
+          wget https://www.openslr.org/resources/7/TEDLIUM_release1.tar.gz -O $openslr_data_dir/SLR7/TEDLIUM_release1.tar.gz
+          wget https://www.openslr.org/resources/8/lexicon-da.tgz -O $openslr_data_dir/SLR8/lexicon-da.tgz
+          wget https://www.openslr.org/resources/8/lexicon-da-nonorm.tgz -O $openslr_data_dir/SLR8/lexicon-da-nonorm.tgz
+          wget https://www.openslr.org/resources/9/wordlist.50k.gz -O $openslr_data_dir/SLR9/wordlist.50k.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch6"
+        bash_command: |
+          wget https://www.openslr.org/resources/10/sre2000-key.tar.gz -O $openslr_data_dir/SLR10/sre2000-key.tar.gz
+          wget https://www.openslr.org/resources/10/sre04_key.tgz -O $openslr_data_dir/SLR10/sre04_key.tgz
+          wget https://www.openslr.org/resources/10/sre04_key-v2.txt.gz -O $openslr_data_dir/SLR10/sre04_key-v2.txt.gz
+          wget https://www.openslr.org/resources/10/sre05-key-v7b.txt.gz -O $openslr_data_dir/SLR10/sre05-key-v7b.txt.gz
+          wget https://www.openslr.org/resources/11/librispeech-lm-corpus.tgz -O $openslr_data_dir/SLR11/librispeech-lm-corpus.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch7"
+        bash_command: |
+          wget https://www.openslr.org/resources/11/librispeech-lm-norm.txt.gz -O $openslr_data_dir/SLR11/librispeech-lm-norm.txt.gz
+          wget https://www.openslr.org/resources/11/librispeech-vocab.txt -O $openslr_data_dir/SLR11/librispeech-vocab.txt
+          wget https://www.openslr.org/resources/11/librispeech-lexicon.txt -O $openslr_data_dir/SLR11/librispeech-lexicon.txt
+          wget https://www.openslr.org/resources/11/3-gram.arpa.gz -O $openslr_data_dir/SLR11/3-gram.arpa.gz
+          wget https://www.openslr.org/resources/11/3-gram.pruned.1e-7.arpa.gz -O $openslr_data_dir/SLR11/3-gram.pruned.1e-7.arpa.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch8"
+        bash_command: |
+          wget https://www.openslr.org/resources/11/3-gram.pruned.3e-7.arpa.gz -O $openslr_data_dir/SLR11/3-gram.pruned.3e-7.arpa.gz
+          wget https://www.openslr.org/resources/11/4-gram.arpa.gz -O $openslr_data_dir/SLR11/4-gram.arpa.gz
+          wget https://www.openslr.org/resources/11/g2p-model-5 -O $openslr_data_dir/SLR11/g2p-model-5
+          wget https://www.openslr.org/resources/12/dev-clean.tar.gz -O $openslr_data_dir/SLR12/dev-clean.tar.gz
+          wget https://www.openslr.org/resources/12/dev-other.tar.gz -O $openslr_data_dir/SLR12/dev-other.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch9"
+        bash_command: |
+          wget https://www.openslr.org/resources/12/test-clean.tar.gz -O $openslr_data_dir/SLR12/test-clean.tar.gz
+          wget https://www.openslr.org/resources/12/test-other.tar.gz -O $openslr_data_dir/SLR12/test-other.tar.gz
+          wget https://www.openslr.org/resources/12/train-clean-100.tar.gz -O $openslr_data_dir/SLR12/train-clean-100.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch10"
+        bash_command: |
+          wget https://www.openslr.org/resources/12/train-clean-360.tar.gz -O $openslr_data_dir/SLR12/train-clean-360.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch11"
+        bash_command: |
+          wget https://www.openslr.org/resources/12/train-other-500.tar.gz -O $openslr_data_dir/SLR12/train-other-500.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch12"
+        bash_command: |
+          wget https://www.openslr.org/resources/12/intro-disclaimers.tar.gz -O $openslr_data_dir/SLR12/intro-disclaimers.tar.gz
+          wget https://www.openslr.org/resources/12/original-books.tar.gz -O $openslr_data_dir/SLR12/original-books.tar.gz
+          wget https://www.openslr.org/resources/12/raw-metadata.tar.gz -O $openslr_data_dir/SLR12/raw-metadata.tar.gz
+          wget https://www.openslr.org/resources/12/md5sum.txt -O $openslr_data_dir/SLR12/md5sum.txt
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch13"
+        bash_command: |
+          wget https://www.openslr.org/resources/13/RWCP.tar.gz -O $openslr_data_dir/SLR13/RWCP.tar.gz
+          wget https://www.openslr.org/resources/14/beep.tar.gz -O $openslr_data_dir/SLR14/beep.tar.gz
+          wget https://www.openslr.org/resources/15/speaker_list.tgz -O $openslr_data_dir/SLR15/speaker_list.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch14"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/ami_manual_1.6.1.tar.gz -O $openslr_data_dir/SLR16/ami_manual_1.6.1.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch15"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/headset.tar.gz -O $openslr_data_dir/SLR16/headset.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch16"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-01.tar.gz -O $openslr_data_dir/SLR16/Array1-01.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch17"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-02.tar.gz -O $openslr_data_dir/SLR16/Array1-02.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch18"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-03.tar.gz -O $openslr_data_dir/SLR16/Array1-03.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch19"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-04.tar.gz -O $openslr_data_dir/SLR16/Array1-04.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch20"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-05.tar.gz -O $openslr_data_dir/SLR16/Array1-05.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch21"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-06.tar.gz -O $openslr_data_dir/SLR16/Array1-06.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch22"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-07.tar.gz -O $openslr_data_dir/SLR16/Array1-07.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch23"
+        bash_command: |
+          wget https://www.openslr.org/resources/16/Array1-08.tar.gz -O $openslr_data_dir/SLR16/Array1-08.tar.genv:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch24"
+        bash_command: |
+          wget https://www.openslr.org/resources/17/musan.tar.gz -O $openslr_data_dir/SLR17/musan.tar.genv:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch25"
+        bash_command: |
+          wget https://www.openslr.org/resources/18/test-noise.tgz -O $openslr_data_dir/SLR18/test-noise.tgz
+          wget https://www.openslr.org/resources/18/resource.tgz -O $openslr_data_dir/SLR18/resource.tgz
+          wget https://www.openslr.org/resources/18/data_thchs30.tgz -O $openslr_data_dir/SLR18/data_thchs30.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch26"
+        bash_command: |
+          wget https://www.openslr.org/resources/19/TEDLIUM_release2.tar.gz -O $openslr_data_dir/SLR19/TEDLIUM_release2.tar.genv:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch27"
+        bash_command: |
+          wget https://www.openslr.org/resources/20/air_database_release_1_4.zip -O $openslr_data_dir/SLR20/air_database_release_1_4.zip
+          wget https://www.openslr.org/resources/21/es_wordlist.json.tgz -O $openslr_data_dir/SLR21/es_wordlist.json.tgz
+          wget https://www.openslr.org/resources/22/data_thuyg20.tar.gz -O $openslr_data_dir/SLR22/data_thuyg20.tar.gz
+          wget https://www.openslr.org/resources/22/data_thuyg20_sre.tar.gz -O $openslr_data_dir/SLR22/data_thuyg20_sre.tar.gz
+          wget https://www.openslr.org/resources/22/test_noise.tar.gz -O $openslr_data_dir/SLR22/test_noise.tar.gz
+          wget https://www.openslr.org/resources/22/test_noise_sre.tar.gz -O $openslr_data_dir/SLR22/test_noise_sre.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch28"
+        bash_command: |
+          wget https://www.openslr.org/resources/22/resource.tar.gz -O $openslr_data_dir/SLR22/resource.tar.gz
+          wget https://www.openslr.org/resources/23/lre07_key.txt -O $openslr_data_dir/SLR23/lre07_key.txt
+          wget https://www.openslr.org/resources/24/iban.tar.gz -O $openslr_data_dir/SLR24/iban.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch29"
+        bash_command: |
+          wget https://www.openslr.org/resources/25/data_readspeech_am.tar.bz2 -O $openslr_data_dir/SLR25/data_readspeech_am.tar.bz2
+          wget https://www.openslr.org/resources/25/data_broadcastnews_sw.tar.bz2 -O $openslr_data_dir/SLR25/data_broadcastnews_sw.tar.bz2
+          wget https://www.openslr.org/resources/25/data_readspeech_wo.tar.bz2 -O $openslr_data_dir/SLR25/data_readspeech_wo.tar.bz2
+          wget https://www.openslr.org/resources/26/sim_rir_8k.zip -O $openslr_data_dir/SLR26/sim_rir_8k.zip
+          wget https://www.openslr.org/resources/26/sim_rir_16k.zip -O $openslr_data_dir/SLR26/sim_rir_16k.zip
+          wget https://www.openslr.org/resources/27/cantab-TEDLIUM.tar.bz2 -O $openslr_data_dir/SLR27/cantab-TEDLIUM.tar.bz2
+          wget https://www.openslr.org/resources/27/cantab-TEDLIUM-partial.tar.bz2 -O $openslr_data_dir/SLR27/cantab-TEDLIUM-partial.tar.bz2
+          wget https://www.openslr.org/resources/28/rirs_noises.zip -O $openslr_data_dir/SLR28/rirs_noises.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch30"
+        bash_command: |
+          wget https://www.openslr.org/resources/29/lexicon-sv.tgz -O $openslr_data_dir/SLR29/lexicon-sv.tgz
+          wget https://www.openslr.org/resources/30/si_lk.tar.gz -O $openslr_data_dir/SLR30/si_lk.tar.gz
+          wget https://www.openslr.org/resources/30/si_lk.lines.txt -O $openslr_data_dir/SLR30/si_lk.lines.txt
+          wget https://www.openslr.org/resources/30/README.txt -O $openslr_data_dir/SLR30/README.txt
+          wget https://www.openslr.org/resources/30/LICENSE.txt -O $openslr_data_dir/SLR30/LICENSE.txt
+          wget https://www.openslr.org/resources/31/dev-clean-2.tar.gz -O $openslr_data_dir/SLR31/dev-clean-2.tar.gz
+          wget https://www.openslr.org/resources/31/train-clean-5.tar.gz -O $openslr_data_dir/SLR31/train-clean-5.tar.gz
+          wget https://www.openslr.org/resources/31/md5sum.txt -O $openslr_data_dir/SLR31/md5sum.txt
+          wget https://www.openslr.org/resources/32/af_za.tar.gz -O $openslr_data_dir/SLR32/af_za.tar.gz
+          wget https://www.openslr.org/resources/32/st_za.tar.gz -O $openslr_data_dir/SLR32/st_za.tar.gz
+          wget https://www.openslr.org/resources/32/tn_za.tar.gz -O $openslr_data_dir/SLR32/tn_za.tar.gz
+          wget https://www.openslr.org/resources/32/xh_za.tar.gz -O $openslr_data_dir/SLR32/xh_za.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch31"
+        bash_command: |
+          wget https://www.openslr.org/resources/33/data_aishell.tgz -O $openslr_data_dir/SLR33/data_aishell.tgz
+          wget https://www.openslr.org/resources/33/resource_aishell.tgz -O $openslr_data_dir/SLR33/resource_aishell.tgz
+          wget https://www.openslr.org/resources/34/santiago.tar.gz -O $openslr_data_dir/SLR34/santiago.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch32"
+        bash_command: |
+          wget https://www.openslr.org/resources/35/asr_javanese.sha256 -O $openslr_data_dir/SLR35/asr_javanese.sha256
+          wget https://www.openslr.org/resources/35/LICENSE -O $openslr_data_dir/SLR35/LICENSE
+          wget https://www.openslr.org/resources/35/utt_spk_text.tsv -O $openslr_data_dir/SLR35/utt_spk_text.tsv
+          wget https://www.openslr.org/resources/35/asr_javanese_0.zip -O $openslr_data_dir/SLR35/asr_javanese_0.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_1.zip -O $openslr_data_dir/SLR35/asr_javanese_1.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch33"
+        bash_command: |
+          wget https://www.openslr.org/resources/35/asr_javanese_2.zip -O $openslr_data_dir/SLR35/asr_javanese_2.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_3.zip -O $openslr_data_dir/SLR35/asr_javanese_3.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_4.zip -O $openslr_data_dir/SLR35/asr_javanese_4.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_5.zip -O $openslr_data_dir/SLR35/asr_javanese_5.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_6.zip -O $openslr_data_dir/SLR35/asr_javanese_6.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch34"
+        bash_command: |
+          wget https://www.openslr.org/resources/35/asr_javanese_7.zip -O $openslr_data_dir/SLR35/asr_javanese_7.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_8.zip -O $openslr_data_dir/SLR35/asr_javanese_8.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_9.zip -O $openslr_data_dir/SLR35/asr_javanese_9.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_a.zip -O $openslr_data_dir/SLR35/asr_javanese_a.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_b.zip -O $openslr_data_dir/SLR35/asr_javanese_b.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch35"
+        bash_command: |
+          wget https://www.openslr.org/resources/35/asr_javanese_c.zip -O $openslr_data_dir/SLR35/asr_javanese_c.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_d.zip -O $openslr_data_dir/SLR35/asr_javanese_d.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_e.zip -O $openslr_data_dir/SLR35/asr_javanese_e.zip
+          wget https://www.openslr.org/resources/35/asr_javanese_f.zip -O $openslr_data_dir/SLR35/asr_javanese_f.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese.sha256 -O $openslr_data_dir/SLR36/asr_sundanese.sha256
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch36"
+        bash_command: |
+          wget https://www.openslr.org/resources/36/LICENSE -O $openslr_data_dir/SLR36/LICENSE
+          wget https://www.openslr.org/resources/36/utt_spk_text.tsv -O $openslr_data_dir/SLR36/utt_spk_text.tsv
+          wget https://www.openslr.org/resources/36/asr_sundanese_0.zip -O $openslr_data_dir/SLR36/asr_sundanese_0.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_1.zip -O $openslr_data_dir/SLR36/asr_sundanese_1.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_2.zip -O $openslr_data_dir/SLR36/asr_sundanese_2.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch37"
+        bash_command: |
+          wget https://www.openslr.org/resources/36/asr_sundanese_3.zip -O $openslr_data_dir/SLR36/asr_sundanese_3.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_4.zip -O $openslr_data_dir/SLR36/asr_sundanese_4.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_5.zip -O $openslr_data_dir/SLR36/asr_sundanese_5.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_6.zip -O $openslr_data_dir/SLR36/asr_sundanese_6.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_7.zip -O $openslr_data_dir/SLR36/asr_sundanese_7.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch38"
+        bash_command: |
+          wget https://www.openslr.org/resources/36/asr_sundanese_8.zip -O $openslr_data_dir/SLR36/asr_sundanese_8.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_9.zip -O $openslr_data_dir/SLR36/asr_sundanese_9.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_a.zip -O $openslr_data_dir/SLR36/asr_sundanese_a.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_b.zip -O $openslr_data_dir/SLR36/asr_sundanese_b.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_c.zip -O $openslr_data_dir/SLR36/asr_sundanese_c.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch39"
+        bash_command: |
+          wget https://www.openslr.org/resources/36/asr_sundanese_d.zip -O $openslr_data_dir/SLR36/asr_sundanese_d.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_e.zip -O $openslr_data_dir/SLR36/asr_sundanese_e.zip
+          wget https://www.openslr.org/resources/36/asr_sundanese_f.zip -O $openslr_data_dir/SLR36/asr_sundanese_f.zip
+          wget https://www.openslr.org/resources/37/bn_bd.zip -O $openslr_data_dir/SLR37/bn_bd.zip
+          wget https://www.openslr.org/resources/37/bn_in.zip -O $openslr_data_dir/SLR37/bn_in.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch40"
+        bash_command: |
+          wget https://www.openslr.org/resources/37/README.txt -O $openslr_data_dir/SLR37/README.txt
+          wget https://www.openslr.org/resources/37/LICENSE.txt -O $openslr_data_dir/SLR37/LICENSE.txt
+          wget https://www.openslr.org/resources/38/ST-CMDS-20170001_1-OS.tar.gz -O $openslr_data_dir/SLR38/ST-CMDS-20170001_1-OS.tar.gz
+          wget https://www.openslr.org/resources/39/LDC2006S37.tar.gz -O $openslr_data_dir/SLR39/LDC2006S37.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch41"
+        bash_command: |
+          wget https://www.openslr.org/resources/40/zeroth_korean.tar.gz -O $openslr_data_dir/SLR40/zeroth_korean.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch42"
+        bash_command: |
+          wget https://www.openslr.org/resources/41/jv_id_female.zip -O $openslr_data_dir/SLR41/jv_id_female.zip
+          wget https://www.openslr.org/resources/41/jv_id_male.zip -O $openslr_data_dir/SLR41/jv_id_male.zip
+          wget https://www.openslr.org/resources/41/LICENSE -O $openslr_data_dir/SLR41/LICENSE
+          wget https://www.openslr.org/resources/42/km_kh_male.zip -O $openslr_data_dir/SLR42/km_kh_male.zip
+          wget https://www.openslr.org/resources/42/LICENSE -O $openslr_data_dir/SLR42/LICENSE
+          wget https://www.openslr.org/resources/43/ne_np_female.zip -O $openslr_data_dir/SLR43/ne_np_female.zip
+          wget https://www.openslr.org/resources/43/LICENSE -O $openslr_data_dir/SLR43/LICENSE
+          wget https://www.openslr.org/resources/44/su_id_female.zip -O $openslr_data_dir/SLR44/su_id_female.zip
+          wget https://www.openslr.org/resources/44/su_id_male.zip -O $openslr_data_dir/SLR44/su_id_male.zip
+          wget https://www.openslr.org/resources/44/LICENSE -O $openslr_data_dir/SLR44/LICENSE
+          wget https://www.openslr.org/resources/45/ST-AEDS-20180100_1-OS.tgz -O $openslr_data_dir/SLR45/ST-AEDS-20180100_1-OS.tgz
+          wget https://www.openslr.org/resources/46/Tunisian_MSA.tar.gz -O $openslr_data_dir/SLR46/Tunisian_MSA.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch43"
+        bash_command: |
+          wget https://www.openslr.org/resources/47/primewords_md_2018_set1.tar.gz -O $openslr_data_dir/SLR47/primewords_md_2018_set1.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch44"
+        bash_command: |
+          wget https://www.openslr.org/resources/48/madcat.dev.raw.lineid -O $openslr_data_dir/SLR48/madcat.dev.raw.lineid
+          wget https://www.openslr.org/resources/48/madcat.test.raw.lineid -O $openslr_data_dir/SLR48/madcat.test.raw.lineid
+          wget https://www.openslr.org/resources/48/madcat.train.raw.lineid -O $openslr_data_dir/SLR48/madcat.train.raw.lineid
+          wget https://www.openslr.org/resources/49/voxceleb1_test.txt -O $openslr_data_dir/SLR49/voxceleb1_test.txt
+          wget https://www.openslr.org/resources/49/voxceleb1_test_v2.txt -O $openslr_data_dir/SLR49/voxceleb1_test_v2.txt
+          wget https://www.openslr.org/resources/49/voxceleb1_sitw_overlap.txt -O $openslr_data_dir/SLR49/voxceleb1_sitw_overlap.txt
+          wget https://www.openslr.org/resources/49/vox1_meta.csv -O $openslr_data_dir/SLR49/vox1_meta.csv
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch45"
+        bash_command: |
+          wget https://www.openslr.org/resources/49/vox2_meta.csv -O $openslr_data_dir/SLR49/vox2_meta.csv
+          wget https://www.openslr.org/resources/50/madcat.dev.raw.lineid -O $openslr_data_dir/SLR50/madcat.dev.raw.lineid
+          wget https://www.openslr.org/resources/50/madcat.test.raw.lineid -O $openslr_data_dir/SLR50/madcat.test.raw.lineid
+          wget https://www.openslr.org/resources/50/madcat.train.raw.lineid -O $openslr_data_dir/SLR50/madcat.train.raw.lineid
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch46"
+        bash_command: |
+          wget https://www.openslr.org/resources/52/about.html -O $openslr_data_dir/SLR52/about.html
+          wget https://www.openslr.org/resources/52/LICENSE -O $openslr_data_dir/SLR52/LICENSE
+          wget https://www.openslr.org/resources/52/utt_spk_text.tsv -O $openslr_data_dir/SLR52/utt_spk_text.tsv
+          wget https://www.openslr.org/resources/52/asr_sinhala_0.zip -O $openslr_data_dir/SLR52/asr_sinhala_0.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_1.zip -O $openslr_data_dir/SLR52/asr_sinhala_1.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch47"
+        bash_command: |
+          wget https://www.openslr.org/resources/52/asr_sinhala_2.zip -O $openslr_data_dir/SLR52/asr_sinhala_2.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_3.zip -O $openslr_data_dir/SLR52/asr_sinhala_3.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_4.zip -O $openslr_data_dir/SLR52/asr_sinhala_4.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_5.zip -O $openslr_data_dir/SLR52/asr_sinhala_5.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_6.zip -O $openslr_data_dir/SLR52/asr_sinhala_6.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch48"
+        bash_command: |
+          wget https://www.openslr.org/resources/52/asr_sinhala_7.zip -O $openslr_data_dir/SLR52/asr_sinhala_7.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_8.zip -O $openslr_data_dir/SLR52/asr_sinhala_8.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_9.zip -O $openslr_data_dir/SLR52/asr_sinhala_9.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_a.zip -O $openslr_data_dir/SLR52/asr_sinhala_a.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_b.zip -O $openslr_data_dir/SLR52/asr_sinhala_b.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch49"
+        bash_command: |
+          wget https://www.openslr.org/resources/52/asr_sinhala_c.zip -O $openslr_data_dir/SLR52/asr_sinhala_c.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_d.zip -O $openslr_data_dir/SLR52/asr_sinhala_d.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_e.zip -O $openslr_data_dir/SLR52/asr_sinhala_e.zip
+          wget https://www.openslr.org/resources/52/asr_sinhala_f.zip -O $openslr_data_dir/SLR52/asr_sinhala_f.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch50"
+        bash_command: |
+          wget https://www.openslr.org/resources/53/about.html -O $openslr_data_dir/SLR53/about.html
+          wget https://www.openslr.org/resources/53/LICENSE -O $openslr_data_dir/SLR53/LICENSE
+          wget https://www.openslr.org/resources/53/utt_spk_text.tsv -O $openslr_data_dir/SLR53/utt_spk_text.tsv
+          wget https://www.openslr.org/resources/53/asr_bengali_0.zip -O $openslr_data_dir/SLR53/asr_bengali_0.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_1.zip -O $openslr_data_dir/SLR53/asr_bengali_1.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_2.zip -O $openslr_data_dir/SLR53/asr_bengali_2.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch51"
+        bash_command: |
+          wget https://www.openslr.org/resources/53/asr_bengali_3.zip -O $openslr_data_dir/SLR53/asr_bengali_3.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_4.zip -O $openslr_data_dir/SLR53/asr_bengali_4.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_5.zip -O $openslr_data_dir/SLR53/asr_bengali_5.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_6.zip -O $openslr_data_dir/SLR53/asr_bengali_6.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_7.zip -O $openslr_data_dir/SLR53/asr_bengali_7.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch52"
+        bash_command: |
+          wget https://www.openslr.org/resources/53/asr_bengali_8.zip -O $openslr_data_dir/SLR53/asr_bengali_8.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_9.zip -O $openslr_data_dir/SLR53/asr_bengali_9.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_a.zip -O $openslr_data_dir/SLR53/asr_bengali_a.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_b.zip -O $openslr_data_dir/SLR53/asr_bengali_b.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_c.zip -O $openslr_data_dir/SLR53/asr_bengali_c.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch53"
+        bash_command: |
+          wget https://www.openslr.org/resources/53/asr_bengali_d.zip -O $openslr_data_dir/SLR53/asr_bengali_d.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_e.zip -O $openslr_data_dir/SLR53/asr_bengali_e.zip
+          wget https://www.openslr.org/resources/53/asr_bengali_f.zip -O $openslr_data_dir/SLR53/asr_bengali_f.zip
+          wget https://www.openslr.org/resources/54/about.html -O $openslr_data_dir/SLR54/about.html
+          wget https://www.openslr.org/resources/54/LICENSE -O $openslr_data_dir/SLR54/LICENSE
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch54"
+        bash_command: |
+          wget https://www.openslr.org/resources/54/utt_spk_text.tsv -O $openslr_data_dir/SLR54/utt_spk_text.tsv
+          wget https://www.openslr.org/resources/54/asr_nepali_0.zip -O $openslr_data_dir/SLR54/asr_nepali_0.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_1.zip -O $openslr_data_dir/SLR54/asr_nepali_1.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_2.zip -O $openslr_data_dir/SLR54/asr_nepali_2.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_3.zip -O $openslr_data_dir/SLR54/asr_nepali_3.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch55"
+        bash_command: |
+          wget https://www.openslr.org/resources/54/asr_nepali_4.zip -O $openslr_data_dir/SLR54/asr_nepali_4.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_5.zip -O $openslr_data_dir/SLR54/asr_nepali_5.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_6.zip -O $openslr_data_dir/SLR54/asr_nepali_6.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_7.zip -O $openslr_data_dir/SLR54/asr_nepali_7.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_8.zip -O $openslr_data_dir/SLR54/asr_nepali_8.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch56"
+        bash_command: |
+          wget https://www.openslr.org/resources/54/asr_nepali_9.zip -O $openslr_data_dir/SLR54/asr_nepali_9.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_a.zip -O $openslr_data_dir/SLR54/asr_nepali_a.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_b.zip -O $openslr_data_dir/SLR54/asr_nepali_b.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_c.zip -O $openslr_data_dir/SLR54/asr_nepali_c.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_d.zip -O $openslr_data_dir/SLR54/asr_nepali_d.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch57"
+        bash_command: |
+          wget https://www.openslr.org/resources/54/asr_nepali_e.zip -O $openslr_data_dir/SLR54/asr_nepali_e.zip
+          wget https://www.openslr.org/resources/54/asr_nepali_f.zip -O $openslr_data_dir/SLR54/asr_nepali_f.zip
+          wget https://www.openslr.org/resources/55/train.tgz -O $openslr_data_dir/SLR55/train.tgz
+          wget https://www.openslr.org/resources/55/test.tgz -O $openslr_data_dir/SLR55/test.tgz
+          wget https://www.openslr.org/resources/56/splits.zip -O $openslr_data_dir/SLR56/splits.zip
+          wget https://www.openslr.org/resources/57/African_Accented_French.tar.gz -O $openslr_data_dir/SLR57/African_Accented_French.tar.gz
+          wget https://www.openslr.org/resources/58/pansori-tedxkr-corpus-1.0.tar.gz -O $openslr_data_dir/SLR58/pansori-tedxkr-corpus-1.0.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch58"
+        bash_command: |
+          wget https://www.openslr.org/resources/59/parlament_v1.0_clean.tar.gz -O $openslr_data_dir/SLR59/parlament_v1.0_clean.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch59"
+        bash_command: |
+          wget https://www.openslr.org/resources/59/parlament_v1.0_other.tar.gz -O $openslr_data_dir/SLR59/parlament_v1.0_other.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch60"
+        bash_command: |
+          wget https://www.openslr.org/resources/60/dev-clean.tar.gz -O $openslr_data_dir/SLR60/dev-clean.tar.gz
+          wget https://www.openslr.org/resources/60/dev-other.tar.gz -O $openslr_data_dir/SLR60/dev-other.tar.gz
+          wget https://www.openslr.org/resources/60/test-clean.tar.gz -O $openslr_data_dir/SLR60/test-clean.tar.gz
+          wget https://www.openslr.org/resources/60/test-other.tar.gz -O $openslr_data_dir/SLR60/test-other.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch61"
+        bash_command: |
+          wget https://www.openslr.org/resources/60/train-clean-100.tar.gz -O $openslr_data_dir/SLR60/train-clean-100.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch62"
+        bash_command: |
+          wget https://www.openslr.org/resources/60/train-clean-360.tar.gz -O $openslr_data_dir/SLR60/train-clean-360.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch63"
+        bash_command: |
+          wget https://www.openslr.org/resources/60/train-other-500.tar.gz -O $openslr_data_dir/SLR60/train-other-500.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch64"
+        bash_command: |
+          wget https://www.openslr.org/resources/61/about.html -O $openslr_data_dir/SLR61/about.html
+          wget https://www.openslr.org/resources/61/LICENSE -O $openslr_data_dir/SLR61/LICENSE
+          wget https://www.openslr.org/resources/61/line_index_female.tsv -O $openslr_data_dir/SLR61/line_index_female.tsv
+          wget https://www.openslr.org/resources/61/line_index_male.tsv -O $openslr_data_dir/SLR61/line_index_male.tsv
+          wget https://www.openslr.org/resources/61/es_es_line_index_weather.tsv -O $openslr_data_dir/SLR61/es_es_line_index_weather.tsv
+          wget https://www.openslr.org/resources/61/es_ar_line_index_weather.tsv -O $openslr_data_dir/SLR61/es_ar_line_index_weather.tsv
+          wget https://www.openslr.org/resources/61/es_ar_female.zip -O $openslr_data_dir/SLR61/es_ar_female.zip
+          wget https://www.openslr.org/resources/61/es_ar_male.zip -O $openslr_data_dir/SLR61/es_ar_male.zip
+          wget https://www.openslr.org/resources/61/es_weather_messages.zip -O $openslr_data_dir/SLR61/es_weather_messages.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch65"
+        bash_command: |
+          wget https://www.openslr.org/resources/62/aidatatang_200zh.tgz -O $openslr_data_dir/SLR62/aidatatang_200zh.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch66"
+        bash_command: |
+          wget https://www.openslr.org/resources/63/about.html -O $openslr_data_dir/SLR63/about.html
+          wget https://www.openslr.org/resources/63/LICENSE -O $openslr_data_dir/SLR63/LICENSE
+          wget https://www.openslr.org/resources/63/line_index_female.tsv -O $openslr_data_dir/SLR63/line_index_female.tsv
+          wget https://www.openslr.org/resources/63/line_index_male.tsv -O $openslr_data_dir/SLR63/line_index_male.tsv
+          wget https://www.openslr.org/resources/63/ml_in_female.zip -O $openslr_data_dir/SLR63/ml_in_female.zip
+          wget https://www.openslr.org/resources/63/ml_in_male.zip -O $openslr_data_dir/SLR63/ml_in_male.zip
+          wget https://www.openslr.org/resources/64/about.html -O $openslr_data_dir/SLR64/about.html
+          wget https://www.openslr.org/resources/64/LICENSE -O $openslr_data_dir/SLR64/LICENSE
+          wget https://www.openslr.org/resources/64/line_index.tsv -O $openslr_data_dir/SLR64/line_index.tsv
+          wget https://www.openslr.org/resources/64/mr_in_female.zip -O $openslr_data_dir/SLR64/mr_in_female.zip
+          wget https://www.openslr.org/resources/65/about.html -O $openslr_data_dir/SLR65/about.html
+          wget https://www.openslr.org/resources/65/LICENSE -O $openslr_data_dir/SLR65/LICENSE
+          wget https://www.openslr.org/resources/65/line_index_female.tsv -O $openslr_data_dir/SLR65/line_index_female.tsv
+          wget https://www.openslr.org/resources/65/line_index_male.tsv -O $openslr_data_dir/SLR65/line_index_male.tsv
+          wget https://www.openslr.org/resources/65/ta_in_female.zip -O $openslr_data_dir/SLR65/ta_in_female.zip
+          wget https://www.openslr.org/resources/65/ta_in_male.zip -O $openslr_data_dir/SLR65/ta_in_male.zip
+          wget https://www.openslr.org/resources/66/about.html -O $openslr_data_dir/SLR66/about.html
+          wget https://www.openslr.org/resources/66/LICENSE -O $openslr_data_dir/SLR66/LICENSE
+          wget https://www.openslr.org/resources/66/line_index_female.tsv -O $openslr_data_dir/SLR66/line_index_female.tsv
+          wget https://www.openslr.org/resources/66/line_index_male.tsv -O $openslr_data_dir/SLR66/line_index_male.tsv
+          wget https://www.openslr.org/resources/66/te_in_female.zip -O $openslr_data_dir/SLR66/te_in_female.zip
+          wget https://www.openslr.org/resources/66/te_in_male.zip -O $openslr_data_dir/SLR66/te_in_male.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch67"
+        bash_command: |
+          wget https://www.openslr.org/resources/67/tedx_spanish_corpus.tgz -O $openslr_data_dir/SLR67/tedx_spanish_corpus.tgz
+          wget https://www.openslr.org/resources/68/dev_set.tar.gz -O $openslr_data_dir/SLR68/dev_set.tar.gz
+          wget https://www.openslr.org/resources/68/test_set.tar.gz -O $openslr_data_dir/SLR68/test_set.tar.gz
+          wget https://www.openslr.org/resources/68/metadata.tar.gz -O $openslr_data_dir/SLR68/metadata.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch68"
+        bash_command: |
+          wget https://www.openslr.org/resources/69/about.html -O $openslr_data_dir/SLR69/about.html
+          wget https://www.openslr.org/resources/69/LICENSE -O $openslr_data_dir/SLR69/LICENSE
+          wget https://www.openslr.org/resources/69/line_index_female.tsv -O $openslr_data_dir/SLR69/line_index_female.tsv
+          wget https://www.openslr.org/resources/69/line_index_male.tsv -O $openslr_data_dir/SLR69/line_index_male.tsv
+          wget https://www.openslr.org/resources/69/ca_es_female.zip -O $openslr_data_dir/SLR69/ca_es_female.zip
+          wget https://www.openslr.org/resources/69/ca_es_male.zip -O $openslr_data_dir/SLR69/ca_es_male.zip
+          wget https://www.openslr.org/resources/70/about.html -O $openslr_data_dir/SLR70/about.html
+          wget https://www.openslr.org/resources/70/LICENSE -O $openslr_data_dir/SLR70/LICENSE
+          wget https://www.openslr.org/resources/70/line_index_female.tsv -O $openslr_data_dir/SLR70/line_index_female.tsv
+          wget https://www.openslr.org/resources/70/line_index_male.tsv -O $openslr_data_dir/SLR70/line_index_male.tsv
+          wget https://www.openslr.org/resources/70/en_ng_female.zip -O $openslr_data_dir/SLR70/en_ng_female.zip
+          wget https://www.openslr.org/resources/70/en_ng_male.zip -O $openslr_data_dir/SLR70/en_ng_male.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch69"
+        bash_command: |
+          wget https://www.openslr.org/resources/71/about.html -O $openslr_data_dir/SLR71/about.html
+          wget https://www.openslr.org/resources/71/LICENSE -O $openslr_data_dir/SLR71/LICENSE
+          wget https://www.openslr.org/resources/71/line_index_female.tsv -O $openslr_data_dir/SLR71/line_index_female.tsv
+          wget https://www.openslr.org/resources/71/line_index_male.tsv -O $openslr_data_dir/SLR71/line_index_male.tsv
+          wget https://www.openslr.org/resources/71/es_cl_female.zip -O $openslr_data_dir/SLR71/es_cl_female.zip
+          wget https://www.openslr.org/resources/71/es_cl_male.zip -O $openslr_data_dir/SLR71/es_cl_male.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch70"
+        bash_command: |
+          wget https://www.openslr.org/resources/72/about.html -O $openslr_data_dir/SLR72/about.html
+          wget https://www.openslr.org/resources/72/LICENSE -O $openslr_data_dir/SLR72/LICENSE
+          wget https://www.openslr.org/resources/72/line_index_female.tsv -O $openslr_data_dir/SLR72/line_index_female.tsv
+          wget https://www.openslr.org/resources/72/line_index_male.tsv -O $openslr_data_dir/SLR72/line_index_male.tsv
+          wget https://www.openslr.org/resources/72/es_co_female.zip -O $openslr_data_dir/SLR72/es_co_female.zip
+          wget https://www.openslr.org/resources/72/es_co_male.zip -O $openslr_data_dir/SLR72/es_co_male.zip
+          wget https://www.openslr.org/resources/73/about.html -O $openslr_data_dir/SLR73/about.html
+          wget https://www.openslr.org/resources/73/LICENSE -O $openslr_data_dir/SLR73/LICENSE
+          wget https://www.openslr.org/resources/73/line_index_female.tsv -O $openslr_data_dir/SLR73/line_index_female.tsv
+          wget https://www.openslr.org/resources/73/line_index_male.tsv -O $openslr_data_dir/SLR73/line_index_male.tsv
+          wget https://www.openslr.org/resources/73/es_pe_female.zip -O $openslr_data_dir/SLR73/es_pe_female.zip
+          wget https://www.openslr.org/resources/73/es_pe_male.zip -O $openslr_data_dir/SLR73/es_pe_male.zip
+          wget https://www.openslr.org/resources/74/about.html -O $openslr_data_dir/SLR74/about.html
+          wget https://www.openslr.org/resources/74/LICENSE -O $openslr_data_dir/SLR74/LICENSE
+          wget https://www.openslr.org/resources/74/line_index_female.tsv -O $openslr_data_dir/SLR74/line_index_female.tsv
+          wget https://www.openslr.org/resources/74/es_pr_female.zip -O $openslr_data_dir/SLR74/es_pr_female.zip
+          wget https://www.openslr.org/resources/75/about.html -O $openslr_data_dir/SLR75/about.html
+          wget https://www.openslr.org/resources/75/LICENSE -O $openslr_data_dir/SLR75/LICENSE
+          wget https://www.openslr.org/resources/75/line_index_female.tsv -O $openslr_data_dir/SLR75/line_index_female.tsv
+          wget https://www.openslr.org/resources/75/line_index_male.tsv -O $openslr_data_dir/SLR75/line_index_male.tsv
+          wget https://www.openslr.org/resources/75/es_ve_female.zip -O $openslr_data_dir/SLR75/es_ve_female.zip
+          wget https://www.openslr.org/resources/75/es_ve_male.zip -O $openslr_data_dir/SLR75/es_ve_male.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch71"
+        bash_command: |
+          wget https://www.openslr.org/resources/76/about.html -O $openslr_data_dir/SLR76/about.html
+          wget https://www.openslr.org/resources/76/LICENSE -O $openslr_data_dir/SLR76/LICENSE
+          wget https://www.openslr.org/resources/76/line_index_female.tsv -O $openslr_data_dir/SLR76/line_index_female.tsv
+          wget https://www.openslr.org/resources/76/line_index_male.tsv -O $openslr_data_dir/SLR76/line_index_male.tsv
+          wget https://www.openslr.org/resources/76/eu_es_female.zip -O $openslr_data_dir/SLR76/eu_es_female.zip
+          wget https://www.openslr.org/resources/76/eu_es_male.zip -O $openslr_data_dir/SLR76/eu_es_male.zip
+          wget https://www.openslr.org/resources/77/about.html -O $openslr_data_dir/SLR77/about.html
+          wget https://www.openslr.org/resources/77/LICENSE -O $openslr_data_dir/SLR77/LICENSE
+          wget https://www.openslr.org/resources/77/line_index_female.tsv -O $openslr_data_dir/SLR77/line_index_female.tsv
+          wget https://www.openslr.org/resources/77/line_index_male.tsv -O $openslr_data_dir/SLR77/line_index_male.tsv
+          wget https://www.openslr.org/resources/77/gl_es_female.zip -O $openslr_data_dir/SLR77/gl_es_female.zip
+          wget https://www.openslr.org/resources/77/gl_es_male.zip -O $openslr_data_dir/SLR77/gl_es_male.zip
+          wget https://www.openslr.org/resources/78/about.html -O $openslr_data_dir/SLR78/about.html
+          wget https://www.openslr.org/resources/78/LICENSE -O $openslr_data_dir/SLR78/LICENSE
+          wget https://www.openslr.org/resources/78/line_index_female.tsv -O $openslr_data_dir/SLR78/line_index_female.tsv
+          wget https://www.openslr.org/resources/78/line_index_male.tsv -O $openslr_data_dir/SLR78/line_index_male.tsv
+          wget https://www.openslr.org/resources/78/gu_in_female.zip -O $openslr_data_dir/SLR78/gu_in_female.zip
+          wget https://www.openslr.org/resources/78/gu_in_male.zip -O $openslr_data_dir/SLR78/gu_in_male.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch72"
+        bash_command: |
+          wget https://www.openslr.org/resources/79/about.html -O $openslr_data_dir/SLR79/about.html
+          wget https://www.openslr.org/resources/79/LICENSE -O $openslr_data_dir/SLR79/LICENSE
+          wget https://www.openslr.org/resources/79/line_index_female.tsv -O $openslr_data_dir/SLR79/line_index_female.tsv
+          wget https://www.openslr.org/resources/79/line_index_male.tsv -O $openslr_data_dir/SLR79/line_index_male.tsv
+          wget https://www.openslr.org/resources/79/kn_in_female.zip -O $openslr_data_dir/SLR79/kn_in_female.zip
+          wget https://www.openslr.org/resources/79/kn_in_male.zip -O $openslr_data_dir/SLR79/kn_in_male.zip
+          wget https://www.openslr.org/resources/80/about.html -O $openslr_data_dir/SLR80/about.html
+          wget https://www.openslr.org/resources/80/LICENSE -O $openslr_data_dir/SLR80/LICENSE
+          wget https://www.openslr.org/resources/80/line_index_female.tsv -O $openslr_data_dir/SLR80/line_index_female.tsv
+          wget https://www.openslr.org/resources/80/my_mm_female.zip -O $openslr_data_dir/SLR80/my_mm_female.zip
+          wget https://www.openslr.org/resources/81/samples.tar.gz -O $openslr_data_dir/SLR81/samples.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch73"
+        bash_command: |
+          wget https://www.openslr.org/resources/82/cn-celeb_v2.tar.gz -O $openslr_data_dir/SLR82/cn-celeb_v2.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch74"
+        bash_command: |
+          wget https://www.openslr.org/resources/82/cn-celeb2_v2.tar.gzaa -O $openslr_data_dir/SLR82/cn-celeb2_v2.tar.gzaa
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch75"
+        bash_command: |
+          wget https://www.openslr.org/resources/82/cn-celeb2_v2.tar.gzab -O $openslr_data_dir/SLR82/cn-celeb2_v2.tar.gzab
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch76"
+        bash_command: |
+          wget https://www.openslr.org/resources/82/cn-celeb2_v2.tar.gzac -O $openslr_data_dir/SLR82/cn-celeb2_v2.tar.gzac
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch77"
+        bash_command: |
+          wget https://www.openslr.org/resources/83/about.html -O $openslr_data_dir/SLR83/about.html
+          wget https://www.openslr.org/resources/83/LICENSE -O $openslr_data_dir/SLR83/LICENSE
+          wget https://www.openslr.org/resources/83/line_index_all.csv -O $openslr_data_dir/SLR83/line_index_all.csv
+          wget https://www.openslr.org/resources/83/dialect_info.txt -O $openslr_data_dir/SLR83/dialect_info.txt
+          wget https://www.openslr.org/resources/83/irish_english_male.zip -O $openslr_data_dir/SLR83/irish_english_male.zip
+          wget https://www.openslr.org/resources/83/midlands_english_female.zip -O $openslr_data_dir/SLR83/midlands_english_female.zip
+          wget https://www.openslr.org/resources/83/midlands_english_male.zip -O $openslr_data_dir/SLR83/midlands_english_male.zip
+          wget https://www.openslr.org/resources/83/northern_english_female.zip -O $openslr_data_dir/SLR83/northern_english_female.zip
+          wget https://www.openslr.org/resources/83/northern_english_male.zip -O $openslr_data_dir/SLR83/northern_english_male.zip
+          wget https://www.openslr.org/resources/83/scottish_english_female.zip -O $openslr_data_dir/SLR83/scottish_english_female.zip
+          wget https://www.openslr.org/resources/83/scottish_english_male.zip -O $openslr_data_dir/SLR83/scottish_english_male.zip
+          wget https://www.openslr.org/resources/83/southern_english_female.zip -O $openslr_data_dir/SLR83/southern_english_female.zip
+          wget https://www.openslr.org/resources/83/southern_english_male.zip -O $openslr_data_dir/SLR83/southern_english_male.zip
+          wget https://www.openslr.org/resources/83/welsh_english_female.zip -O $openslr_data_dir/SLR83/welsh_english_female.zip
+          wget https://www.openslr.org/resources/83/welsh_english_male.zip -O $openslr_data_dir/SLR83/welsh_english_male.zip
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch78"
+        bash_command: |
+          wget https://www.openslr.org/resources/84/scribblelens.corpus.v1.2.zip -O $openslr_data_dir/SLR84/scribblelens.corpus.v1.2.zip
+          wget https://www.openslr.org/resources/84/scribblelens.supplement.original.pages.tgz -O $openslr_data_dir/SLR84/scribblelens.supplement.original.pages.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch79"
+        bash_command: |
+          wget https://www.openslr.org/resources/85/train.tar.gz -O $openslr_data_dir/SLR85/train.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch80"
+        bash_command: |
+          wget https://www.openslr.org/resources/85/dev.tar.gz -O $openslr_data_dir/SLR85/dev.tar.gz
+          wget https://www.openslr.org/resources/85/test.tar.gz -O $openslr_data_dir/SLR85/test.tar.gz
+          wget https://www.openslr.org/resources/85/test_v2.tar.gz -O $openslr_data_dir/SLR85/test_v2.tar.gz
+          wget https://www.openslr.org/resources/85/filename_mapping.tar.gz -O $openslr_data_dir/SLR85/filename_mapping.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch81"
+        bash_command: |
+          wget https://www.openslr.org/resources/86/about.html -O $openslr_data_dir/SLR86/about.html
+          wget https://www.openslr.org/resources/86/LICENSE -O $openslr_data_dir/SLR86/LICENSE
+          wget https://www.openslr.org/resources/86/line_index_female.tsv -O $openslr_data_dir/SLR86/line_index_female.tsv
+          wget https://www.openslr.org/resources/86/line_index_male.tsv -O $openslr_data_dir/SLR86/line_index_male.tsv
+          wget https://www.openslr.org/resources/86/yo_ng_female.zip -O $openslr_data_dir/SLR86/yo_ng_female.zip
+          wget https://www.openslr.org/resources/86/yo_ng_male.zip -O $openslr_data_dir/SLR86/yo_ng_male.zip
+          wget https://www.openslr.org/resources/86/annotation_info.txt -O $openslr_data_dir/SLR86/annotation_info.txt
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch82"
+        bash_command: |
+          wget https://www.openslr.org/resources/87/mobvoi_hotword_dataset.tgz -O $openslr_data_dir/SLR87/mobvoi_hotword_dataset.tgz
+          wget https://www.openslr.org/resources/87/mobvoi_hotword_dataset_resources.tgz -O $openslr_data_dir/SLR87/mobvoi_hotword_dataset_resources.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch83"
+        bash_command: |
+          wget https://www.openslr.org/resources/88/wav.tgz -O $openslr_data_dir/SLR88/wav.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch84"
+        bash_command: |
+          wget https://www.openslr.org/resources/88/txt.tgz -O $openslr_data_dir/SLR88/txt.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch85"
+        bash_command: |
+          wget https://www.openslr.org/resources/89/Yoloxochitl-Mixtec-Manifest.tgz -O $openslr_data_dir/SLR89/Yoloxochitl-Mixtec-Manifest.tgz
+          wget https://www.openslr.org/resources/89/Novice-Transcription-Correction.zip -O $openslr_data_dir/SLR89/Novice-Transcription-Correction.zip
+          wget https://www.openslr.org/resources/92/Puebla-Nahuatl-Manifest.tgz -O $openslr_data_dir/SLR92/Puebla-Nahuatl-Manifest.tgz
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part00 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part00
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch86"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part01 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part01
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch87"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part02 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part02
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch88"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part03 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part03
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch89"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part04 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part04
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch90"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part05 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part05
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch91"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part06 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part06
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch92"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part07 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part07
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch93"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part08 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part08
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch94"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part09 -O $openslr_data_dir/SLR92/Sound-Files-Puebla-Nahuatl.tgz.part09
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch95"
+        bash_command: |
+          wget https://www.openslr.org/resources/92/SpeechTranslation_Nahuatl_Manifest.tgz -O $openslr_data_dir/SLR92/SpeechTranslation_Nahuatl_Manifest.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch96"
+        bash_command: |
+          wget https://www.openslr.org/resources/93/data_aishell3.tgz -O $openslr_data_dir/SLR93/data_aishell3.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch97"
+        bash_command: |
+          wget https://www.openslr.org/resources/95/thorsten-de_v02.tgz -O $openslr_data_dir/SLR95/thorsten-de_v02.tgz
+          wget https://www.openslr.org/resources/96/ruls_data.tar.gz -O $openslr_data_dir/SLR96/ruls_data.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch98"
+        bash_command: |
+          wget https://www.openslr.org/resources/97/KoreanReadSpeechCorpus.tar.gz -O $openslr_data_dir/SLR97/KoreanReadSpeechCorpus.tar.gz
+          wget https://www.openslr.org/resources/98/Parent-ChildVocalInteraction.tar.gz -O $openslr_data_dir/SLR98/Parent-ChildVocalInteraction.tar.gz
+          wget https://www.openslr.org/resources/99/NonverbalVocalization.tgz -O $openslr_data_dir/SLR99/NonverbalVocalization.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch99"
+        bash_command: |
+          wget https://www.openslr.org/resources/101/speechocean762.tar.gz -O $openslr_data_dir/SLR101/speechocean762.tar.gz
+          wget https://www.openslr.org/resources/102/ISSAI_KSC_335RS_v1.1_flac.tar.gz -O $openslr_data_dir/SLR102/ISSAI_KSC_335RS_v1.1_flac.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch100"
+        bash_command: |
+          wget https://www.openslr.org/resources/103/Hindi_train.tar.gz -O $openslr_data_dir/SLR103/Hindi_train.tar.gz
+          wget https://www.openslr.org/resources/103/Hindi_test.tar.gz -O $openslr_data_dir/SLR103/Hindi_test.tar.gz
+          wget https://www.openslr.org/resources/103/Marathi_train.tar.gz -O $openslr_data_dir/SLR103/Marathi_train.tar.gz
+          wget https://www.openslr.org/resources/103/Marathi_test.tar.gz -O $openslr_data_dir/SLR103/Marathi_test.tar.gz
+          wget https://www.openslr.org/resources/103/Odia_train.tar.gz -O $openslr_data_dir/SLR103/Odia_train.tar.gz
+          wget https://www.openslr.org/resources/103/Odia_test.tar.gz -O $openslr_data_dir/SLR103/Odia_test.tar.gz
+          wget https://www.openslr.org/resources/103/subtask1_blindtest_wReadme.tar.gz -O $openslr_data_dir/SLR103/subtask1_blindtest_wReadme.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch101"
+        bash_command: |
+          wget https://www.openslr.org/resources/104/Hindi-English_train.tar.gz -O $openslr_data_dir/SLR104/Hindi-English_train.tar.gz
+          wget https://www.openslr.org/resources/104/Hindi-English_test.tar.gz -O $openslr_data_dir/SLR104/Hindi-English_test.tar.gz
+          wget https://www.openslr.org/resources/104/Bengali-English_train.tar.gz -O $openslr_data_dir/SLR104/Bengali-English_train.tar.gz
+          wget https://www.openslr.org/resources/104/Bengali-English_test.tar.gz -O $openslr_data_dir/SLR104/Bengali-English_test.tar.gz
+          wget https://www.openslr.org/resources/104/subtask2_blindtest_wReadme.tar.gz -O $openslr_data_dir/SLR104/subtask2_blindtest_wReadme.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch102"
+        bash_command: |
+          wget https://www.openslr.org/resources/105/nicolingua-0003-west-african-radio-corpus.tgz -O $openslr_data_dir/SLR105/nicolingua-0003-west-african-radio-corpus.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch103"
+        bash_command: |
+          wget https://www.openslr.org/resources/106/nicolingua-0004-west-african-va-asr-corpus.tgz -O $openslr_data_dir/SLR106/nicolingua-0004-west-african-va-asr-corpus.tgz
+          wget https://www.openslr.org/resources/107/Deposit-Totonaco-for-ASR-Community.pdf -O $openslr_data_dir/SLR107/Deposit-Totonaco-for-ASR-Community.pdf
+          wget https://www.openslr.org/resources/107/Amith-Lopez_Totonac-recordings-northern-Puebla-and-adjacent-Veracruz_Metadata.xml -O $openslr_data_dir/SLR107/Amith-Lopez_Totonac-recordings-northern-Puebla-and-adjacent-Veracruz_Metadata.xml
+          wget https://www.openslr.org/resources/107/Totonac_Corpus.tgz -O $openslr_data_dir/SLR107/Totonac_Corpus.tgz
+          wget https://www.openslr.org/resources/108/AR.tgz -O $openslr_data_dir/SLR108/AR.tgz
+          wget https://www.openslr.org/resources/108/ES.tgz -O $openslr_data_dir/SLR108/ES.tgz
+          wget https://www.openslr.org/resources/108/FR.tgz -O $openslr_data_dir/SLR108/FR.tgz
+          wget https://www.openslr.org/resources/108/TR.tgz -O $openslr_data_dir/SLR108/TR.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch104"
+        bash_command: |
+          wget https://www.openslr.org/resources/100/mtedx_es.tgz -O $openslr_data_dir/SLR100/mtedx_es.tgz
+          wget https://www.openslr.org/resources/100/mtedx_fr.tgz -O $openslr_data_dir/SLR100/mtedx_fr.tgz
+          wget https://www.openslr.org/resources/100/mtedx_pt.tgz -O $openslr_data_dir/SLR100/mtedx_pt.tgz
+          wget https://www.openslr.org/resources/100/mtedx_it.tgz -O $openslr_data_dir/SLR100/mtedx_it.tgz
+          wget https://www.openslr.org/resources/100/mtedx_ru.tgz -O $openslr_data_dir/SLR100/mtedx_ru.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch105"
+        bash_command: |
+          wget https://www.openslr.org/resources/100/mtedx_el.tgz -O $openslr_data_dir/SLR100/mtedx_el.tgz
+          wget https://www.openslr.org/resources/100/mtedx_ar.tgz -O $openslr_data_dir/SLR100/mtedx_ar.tgz
+          wget https://www.openslr.org/resources/100/mtedx_de.tgz -O $openslr_data_dir/SLR100/mtedx_de.tgz
+          wget https://www.openslr.org/resources/100/mtedx_es-en.tgz -O $openslr_data_dir/SLR100/mtedx_es-en.tgz
+          wget https://www.openslr.org/resources/100/mtedx_es-fr.tgz -O $openslr_data_dir/SLR100/mtedx_es-fr.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch106"
+        bash_command: |
+          wget https://www.openslr.org/resources/100/mtedx_es-it.tgz -O $openslr_data_dir/SLR100/mtedx_es-it.tgz
+          wget https://www.openslr.org/resources/100/mtedx_es-pt.tgz -O $openslr_data_dir/SLR100/mtedx_es-pt.tgz
+          wget https://www.openslr.org/resources/100/mtedx_fr-en.tgz -O $openslr_data_dir/SLR100/mtedx_fr-en.tgz
+          wget https://www.openslr.org/resources/100/mtedx_fr-es.tgz -O $openslr_data_dir/SLR100/mtedx_fr-es.tgz
+          wget https://www.openslr.org/resources/100/mtedx_fr-pt.tgz -O $openslr_data_dir/SLR100/mtedx_fr-pt.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch107"
+        bash_command: |
+          wget https://www.openslr.org/resources/100/mtedx_pt-en.tgz -O $openslr_data_dir/SLR100/mtedx_pt-en.tgz
+          wget https://www.openslr.org/resources/100/mtedx_pt-es.tgz -O $openslr_data_dir/SLR100/mtedx_pt-es.tgz
+          wget https://www.openslr.org/resources/100/mtedx_it-en.tgz -O $openslr_data_dir/SLR100/mtedx_it-en.tgz
+          wget https://www.openslr.org/resources/100/mtedx_it-es.tgz -O $openslr_data_dir/SLR100/mtedx_it-es.tgz
+          wget https://www.openslr.org/resources/100/mtedx_ru-en.tgz -O $openslr_data_dir/SLR100/mtedx_ru-en.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch108"
+        bash_command: |
+          wget https://www.openslr.org/resources/100/mtedx_el-en.tgz -O $openslr_data_dir/SLR100/mtedx_el-en.tgz
+          wget https://www.openslr.org/resources/100/mtedx_iwslt2021.tgz -O $openslr_data_dir/SLR100/mtedx_iwslt2021.tgz
+          wget https://www.openslr.org/resources/100/MTEDx-french-talks-gender-annotation.csv -O $openslr_data_dir/SLR100/MTEDx-french-talks-gender-annotation.csv
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch109"
+        bash_command: |
+          wget https://www.openslr.org/resources/109/hi_fi_tts_v0.tar.gz -O $openslr_data_dir/SLR109/hi_fi_tts_v0.tar.gz
+          wget https://www.openslr.org/resources/110/thorsten-emotional_v02.tgz -O $openslr_data_dir/SLR110/thorsten-emotional_v02.tgz
+          wget https://www.openslr.org/resources/111/train_L.tar.gz -O $openslr_data_dir/SLR111/train_L.tar.gz
+          wget https://www.openslr.org/resources/111/train_M.tar.gz -O $openslr_data_dir/SLR111/train_M.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch110"
+        bash_command: |
+          wget https://www.openslr.org/resources/111/train_S.tar.gz -O $openslr_data_dir/SLR111/train_S.tar.gz
+          wget https://www.openslr.org/resources/111/test.tar.gz -O $openslr_data_dir/SLR111/test.tar.gz
+          wget https://www.openslr.org/resources/112/samromur_21.05.tgz -O $openslr_data_dir/SLR112/samromur_21.05.tgz
+          wget https://www.openslr.org/resources/113/readme.tgz -O $openslr_data_dir/SLR113/readme.tgz
+          wget https://www.openslr.org/resources/113/label.tgz -O $openslr_data_dir/SLR113/label.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch111"
+        bash_command: |
+          wget https://www.openslr.org/resources/113/sound.tgz -O $openslr_data_dir/SLR113/sound.tgz
+          wget https://www.openslr.org/resources/114/golos_opus.tar.gz -O $openslr_data_dir/SLR114/golos_opus.tar.gz
+          wget https://www.openslr.org/resources/114/QuartzNet15x5_golos.nemo.gz -O $openslr_data_dir/SLR114/QuartzNet15x5_golos.nemo.gz
+          wget https://www.openslr.org/resources/114/kenlms.tar.gz -O $openslr_data_dir/SLR114/kenlms.tar.gz
+          wget https://www.openslr.org/resources/115/bea_Amused.tar.gz -O $openslr_data_dir/SLR115/bea_Amused.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch112"
+        bash_command: |
+          wget https://www.openslr.org/resources/115/bea_Angry.tar.gz -O $openslr_data_dir/SLR115/bea_Angry.tar.gz
+          wget https://www.openslr.org/resources/115/bea_Disgusted.tar.gz -O $openslr_data_dir/SLR115/bea_Disgusted.tar.gz
+          wget https://www.openslr.org/resources/115/bea_Neutral.tar.gz -O $openslr_data_dir/SLR115/bea_Neutral.tar.gz
+          wget https://www.openslr.org/resources/115/bea_Sleepy.tar.gz -O $openslr_data_dir/SLR115/bea_Sleepy.tar.gz
+          wget https://www.openslr.org/resources/115/jenie_Amused.tar.gz -O $openslr_data_dir/SLR115/jenie_Amused.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch113"
+        bash_command: |
+          wget https://www.openslr.org/resources/115/jenie_Angry.tar.gz -O $openslr_data_dir/SLR115/jenie_Angry.tar.gz
+          wget https://www.openslr.org/resources/115/jenie_Disgusted.tar.gz -O $openslr_data_dir/SLR115/jenie_Disgusted.tar.gz
+          wget https://www.openslr.org/resources/115/jenie_Neutral.tar.gz -O $openslr_data_dir/SLR115/jenie_Neutral.tar.gz
+          wget https://www.openslr.org/resources/115/jenie_Sleepy.tar.gz -O $openslr_data_dir/SLR115/jenie_Sleepy.tar.gz
+          wget https://www.openslr.org/resources/115/josh_Amused.tar.gz -O $openslr_data_dir/SLR115/josh_Amused.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch114"
+        bash_command: |
+          wget https://www.openslr.org/resources/115/josh_Neutral.tar.gz -O $openslr_data_dir/SLR115/josh_Neutral.tar.gz
+          wget https://www.openslr.org/resources/115/josh_Sleepy.tar.gz -O $openslr_data_dir/SLR115/josh_Sleepy.tar.gz
+          wget https://www.openslr.org/resources/115/sam_Amused.tar.gz -O $openslr_data_dir/SLR115/sam_Amused.tar.gz
+          wget https://www.openslr.org/resources/115/sam_Angry.tar.gz -O $openslr_data_dir/SLR115/sam_Angry.tar.gz
+          wget https://www.openslr.org/resources/115/sam_Disgusted.tar.gz -O $openslr_data_dir/SLR115/sam_Disgusted.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch115"
+        bash_command: |
+          wget https://www.openslr.org/resources/115/sam_Neutral.tar.gz -O $openslr_data_dir/SLR115/sam_Neutral.tar.gz
+          wget https://www.openslr.org/resources/115/sam_Sleepy.tar.gz -O $openslr_data_dir/SLR115/sam_Sleepy.tar.gz
+          wget https://www.openslr.org/resources/116/samromur_queries_21.12.zip -O $openslr_data_dir/SLR116/samromur_queries_21.12.zip
+          wget https://www.openslr.org/resources/117/samromur_children_21.09.zip -O $openslr_data_dir/SLR117/samromur_children_21.09.zip
+          wget https://www.openslr.org/resources/118/GV_Train_100h.tar.gz -O $openslr_data_dir/SLR118/GV_Train_100h.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch116"
+        bash_command: |
+          wget https://www.openslr.org/resources/118/GV_Dev_5h.tar.gz -O $openslr_data_dir/SLR118/GV_Dev_5h.tar.gz
+          wget https://www.openslr.org/resources/118/GV_Eval_3h.tar.gz -O $openslr_data_dir/SLR118/GV_Eval_3h.tar.gz
+          wget https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part1.tar.gz -O $openslr_data_dir/SLR118/Gramvaani_1000hrData_Part1.tar.gz
+          wget https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part2.tar.gz -O $openslr_data_dir/SLR118/Gramvaani_1000hrData_Part2.tar.gz
+          wget https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part3.tar.gz -O $openslr_data_dir/SLR118/Gramvaani_1000hrData_Part3.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch117"
+        bash_command: |
+          wget https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part4.tar.gz -O $openslr_data_dir/SLR118/Gramvaani_1000hrData_Part4.tar.gz
+          wget https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part5.tar.gz -O $openslr_data_dir/SLR118/Gramvaani_1000hrData_Part5.tar.gz
+          wget https://www.openslr.org/resources/118/Metadata.tar.gz -O $openslr_data_dir/SLR118/Metadata.tar.gz
+          wget https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Train_Ali_near.tar.gz -O $openslr_data_dir/SLR119/Train_Ali_near.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch118"
+        bash_command: |
+          wget https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Eval_Ali.tar.gz -O $openslr_data_dir/SLR119/Eval_Ali.tar.gz
+          wget https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Test_Ali.tar.gz -O $openslr_data_dir/SLR119/Test_Ali.tar.gz
+          wget https://www.openslr.org/resources/120/data.tgz -O $openslr_data_dir/SLR120/data.tgz
+          wget https://www.openslr.org/resources/120/resource.tgz -O $openslr_data_dir/SLR120/resource.tgz
+          wget https://www.openslr.org/resources/122/kashmiri.tar.gz -O $openslr_data_dir/SLR122/kashmiri.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch119"
+        bash_command: |
+          wget https://www.openslr.org/resources/123/MagicData-RAMC.tar.gz -O $openslr_data_dir/SLR123/MagicData-RAMC.tar.gz
+          wget https://www.openslr.org/resources/124/Tibetan_speech_data.tgz -O $openslr_data_dir/SLR124/Tibetan_speech_data.tgz
+          wget https://www.openslr.org/resources/125/BLARK_1.0_update.tar.gz -O $openslr_data_dir/SLR125/BLARK_1.0_update.tar.gz
+          wget https://www.openslr.org/resources/126/mile_kannada_train.tar.gz -O $openslr_data_dir/SLR126/mile_kannada_train.tar.gz
+          wget https://www.openslr.org/resources/126/mile_kannada_test.tar.gz -O $openslr_data_dir/SLR126/mile_kannada_test.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch120"
+        bash_command: |
+          wget https://www.openslr.org/resources/127/mile_tamil_asr_corpus.tar.gz -O $openslr_data_dir/SLR127/mile_tamil_asr_corpus.tar.gz
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.zip -O $openslr_data_dir/SLR128/samromur_unverified_22.07.zip
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z01 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z01
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z02 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z02
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z03 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z03
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch121"
+        bash_command: |
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z04 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z04
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z05 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z05
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z06 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z06
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z07 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z07
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z08 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z08
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch122"
+        bash_command: |
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z09 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z09
+          wget https://www.openslr.org/resources/128/samromur_unverified_22.07.z10 -O $openslr_data_dir/SLR128/samromur_unverified_22.07.z10
+          wget https://www.openslr.org/resources/128/samromur_unverified_md5sums.txt -O $openslr_data_dir/SLR128/samromur_unverified_md5sums.txt
+          wget https://www.openslr.org/resources/129/akuapem-twi.tgz -O $openslr_data_dir/SLR129/akuapem-twi.tgz
+          wget https://www.openslr.org/resources/129/asante-twi.tgz -O $openslr_data_dir/SLR129/asante-twi.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch123"
+        bash_command: |
+          wget https://www.openslr.org/resources/129/ewe.tgz -O $openslr_data_dir/SLR129/ewe.tgz
+          wget https://www.openslr.org/resources/129/hausa.tgz -O $openslr_data_dir/SLR129/hausa.tgz
+          wget https://www.openslr.org/resources/129/lingala.tgz -O $openslr_data_dir/SLR129/lingala.tgz
+          wget https://www.openslr.org/resources/129/yoruba.tgz -O $openslr_data_dir/SLR129/yoruba.tgz
+      env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch124"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_german_opus.tar.gz -O $openslr_data_dir/SLR94/mls_german_opus.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch125"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_dutch_opus.tar.gz -O $openslr_data_dir/SLR94/mls_dutch_opus.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch126"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_french_opus.tar.gz -O $openslr_data_dir/SLR94/mls_french_opus.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch127"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_spanish_opus.tar.gz -O $openslr_data_dir/SLR94/mls_spanish_opus.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch128"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_italian_opus.tar.gz -O $openslr_data_dir/SLR94/mls_italian_opus.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_portuguese_opus.tar.gz -O $openslr_data_dir/SLR94/mls_portuguese_opus.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_polish_opus.tar.gz -O $openslr_data_dir/SLR94/mls_polish_opus.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch129"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_english.tar.gz -O $openslr_data_dir/SLR94/mls_lm_english.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch130"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_german.tar.gz -O $openslr_data_dir/SLR94/mls_lm_german.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_dutch.tar.gz -O $openslr_data_dir/SLR94/mls_lm_dutch.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_french.tar.gz -O $openslr_data_dir/SLR94/mls_lm_french.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_spanish.tar.gz -O $openslr_data_dir/SLR94/mls_lm_spanish.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_italian.tar.gz -O $openslr_data_dir/SLR94/mls_lm_italian.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch131"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_portuguese.tar.gz -O $openslr_data_dir/SLR94/mls_lm_portuguese.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/mls_lm_polish.tar.gz -O $openslr_data_dir/SLR94/mls_lm_polish.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/lv_text.tar.gz -O $openslr_data_dir/SLR94/lv_text.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/unrated_transcripts.tar.gz -O $openslr_data_dir/SLR94/unrated_transcripts.tar.gz
+          wget https://dl.fbaipublicfiles.com/mls/md5sum.txt -O $openslr_data_dir/SLR94/md5sum.txt
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch132"
+        bash_command: |
+          wget https://www.openslr.org/resources/68/train_set.tar.gz -O $openslr_data_dir/SLR68/train_set.tar.gz
+      env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch133"
+        bash_command: |
+          wget https://www.openslr.org/resources/51/TEDLIUM_release-3.tgz -O $openslr_data_dir/SLR51/TEDLIUM_release-3.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch134"
+        bash_command: |
+          wget https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Train_Ali_far.tar.gz -O $openslr_data_dir/SLR119/Train_Ali_far.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch135"
+        bash_command: |
+          wget https://www.openslr.org/resources/89/Yoloxochitl-Mixtec-Data.tgz -O $openslr_data_dir/SLR89/Yoloxochitl-Mixtec-Data.tgz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch136"
+        bash_command: |
+          wget https://www.openslr.org/resources/12/original-mp3.tar.gz -O $openslr_data_dir/SLR12/original-mp3.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+    - operator: "BashOperator"
+      description: "upload openslr data to GCS"
+      args:
+        task_id: "upload_openslr_data_to_gcs_batch137"
+        bash_command: |
+          wget https://dl.fbaipublicfiles.com/mls/mls_english_opus.tar.gz -O $openslr_data_dir/SLR94/mls_english_opus.tar.gz
+        env:
+          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+
+  graph_paths:
+    - "create_folder >> upload_openslr_data_to_gcs_batch1 >> upload_openslr_data_to_gcs_batch2 >> upload_openslr_data_to_gcs_batch3 >> upload_openslr_data_to_gcs_batch4 >> upload_openslr_data_to_gcs_batch5 >> upload_openslr_data_to_gcs_batch6 >> upload_openslr_data_to_gcs_batch7 >> upload_openslr_data_to_gcs_batch8 >> upload_openslr_data_to_gcs_batch9 >> upload_openslr_data_to_gcs_batch10 >> upload_openslr_data_to_gcs_batch11 >> upload_openslr_data_to_gcs_batch12 >> upload_openslr_data_to_gcs_batch13 >> upload_openslr_data_to_gcs_batch14 >> upload_openslr_data_to_gcs_batch15 >> upload_openslr_data_to_gcs_batch16 >> upload_openslr_data_to_gcs_batch17 >> upload_openslr_data_to_gcs_batch18 >> upload_openslr_data_to_gcs_batch19 >> upload_openslr_data_to_gcs_batch20 >> upload_openslr_data_to_gcs_batch21 >> upload_openslr_data_to_gcs_batch22 >> upload_openslr_data_to_gcs_batch23 >> upload_openslr_data_to_gcs_batch24 >> upload_openslr_data_to_gcs_batch25 >> upload_openslr_data_to_gcs_batch26 >> upload_openslr_data_to_gcs_batch27 >> upload_openslr_data_to_gcs_batch28 >> upload_openslr_data_to_gcs_batch29 >> upload_openslr_data_to_gcs_batch30 >> upload_openslr_data_to_gcs_batch31 >> upload_openslr_data_to_gcs_batch32 >> upload_openslr_data_to_gcs_batch33 >> upload_openslr_data_to_gcs_batch34 >> upload_openslr_data_to_gcs_batch35 >> upload_openslr_data_to_gcs_batch36 >> upload_openslr_data_to_gcs_batch37 >> upload_openslr_data_to_gcs_batch38 >> upload_openslr_data_to_gcs_batch39 >> upload_openslr_data_to_gcs_batch40 >> upload_openslr_data_to_gcs_batch41 >> upload_openslr_data_to_gcs_batch42 >> upload_openslr_data_to_gcs_batch43 >> upload_openslr_data_to_gcs_batch44 >> upload_openslr_data_to_gcs_batch45 >> upload_openslr_data_to_gcs_batch46 >> upload_openslr_data_to_gcs_batch47 >> upload_openslr_data_to_gcs_batch48 >> upload_openslr_data_to_gcs_batch49 >> upload_openslr_data_to_gcs_batch50 >> upload_openslr_data_to_gcs_batch51 >> upload_openslr_data_to_gcs_batch52 >> upload_openslr_data_to_gcs_batch53 >> upload_openslr_data_to_gcs_batch54 >> upload_openslr_data_to_gcs_batch55 >> upload_openslr_data_to_gcs_batch56 >> upload_openslr_data_to_gcs_batch57 >> upload_openslr_data_to_gcs_batch58 >> upload_openslr_data_to_gcs_batch59 >> upload_openslr_data_to_gcs_batch60 >> upload_openslr_data_to_gcs_batch61 >> upload_openslr_data_to_gcs_batch62 >> upload_openslr_data_to_gcs_batch63 >> upload_openslr_data_to_gcs_batch64 >> upload_openslr_data_to_gcs_batch65 >> upload_openslr_data_to_gcs_batch66 >> upload_openslr_data_to_gcs_batch67 >> upload_openslr_data_to_gcs_batch68 >> upload_openslr_data_to_gcs_batch69 >> upload_openslr_data_to_gcs_batch70 >> upload_openslr_data_to_gcs_batch71 >> upload_openslr_data_to_gcs_batch72 >> upload_openslr_data_to_gcs_batch73 >> upload_openslr_data_to_gcs_batch74 >> upload_openslr_data_to_gcs_batch75 >> upload_openslr_data_to_gcs_batch76 >> upload_openslr_data_to_gcs_batch77 >> upload_openslr_data_to_gcs_batch78 >> upload_openslr_data_to_gcs_batch79 >> upload_openslr_data_to_gcs_batch80 >> upload_openslr_data_to_gcs_batch81 >> upload_openslr_data_to_gcs_batch82 >> upload_openslr_data_to_gcs_batch83 >> upload_openslr_data_to_gcs_batch84 >> upload_openslr_data_to_gcs_batch85 >> upload_openslr_data_to_gcs_batch86 >> upload_openslr_data_to_gcs_batch87 >> upload_openslr_data_to_gcs_batch88 >> upload_openslr_data_to_gcs_batch89 >> upload_openslr_data_to_gcs_batch90 >> upload_openslr_data_to_gcs_batch91 >> upload_openslr_data_to_gcs_batch92 >> upload_openslr_data_to_gcs_batch93 >> upload_openslr_data_to_gcs_batch94 >> upload_openslr_data_to_gcs_batch95 >> upload_openslr_data_to_gcs_batch96 >> upload_openslr_data_to_gcs_batch97 >> upload_openslr_data_to_gcs_batch98 >> upload_openslr_data_to_gcs_batch99 >> upload_openslr_data_to_gcs_batch100 >> upload_openslr_data_to_gcs_batch101 >> upload_openslr_data_to_gcs_batch102 >> upload_openslr_data_to_gcs_batch103 >> upload_openslr_data_to_gcs_batch104 >> upload_openslr_data_to_gcs_batch105 >> upload_openslr_data_to_gcs_batch106 >> upload_openslr_data_to_gcs_batch107 >> upload_openslr_data_to_gcs_batch108 >> upload_openslr_data_to_gcs_batch109 >> upload_openslr_data_to_gcs_batch110 >> upload_openslr_data_to_gcs_batch111 >> upload_openslr_data_to_gcs_batch112 >> upload_openslr_data_to_gcs_batch113 >> upload_openslr_data_to_gcs_batch114 >> upload_openslr_data_to_gcs_batch115 >> upload_openslr_data_to_gcs_batch116 >> upload_openslr_data_to_gcs_batch117 >> upload_openslr_data_to_gcs_batch118 >> upload_openslr_data_to_gcs_batch119 >> upload_openslr_data_to_gcs_batch120 >> upload_openslr_data_to_gcs_batch121 >> upload_openslr_data_to_gcs_batch122 >> upload_openslr_data_to_gcs_batch123 >> upload_openslr_data_to_gcs_batch124 >> upload_openslr_data_to_gcs_batch125 >> upload_openslr_data_to_gcs_batch126 >> upload_openslr_data_to_gcs_batch127 >> upload_openslr_data_to_gcs_batch128 >> upload_openslr_data_to_gcs_batch129 >> upload_openslr_data_to_gcs_batch130 >> upload_openslr_data_to_gcs_batch131 >> upload_openslr_data_to_gcs_batch132 >> upload_openslr_data_to_gcs_batch133 >> upload_openslr_data_to_gcs_batch134 >> upload_openslr_data_to_gcs_batch135 >> upload_openslr_data_to_gcs_batch136 >> upload_openslr_data_to_gcs_batch137"
+

@@ -1,0 +1,1567 @@
+[
+	{
+		"Resource": "SLR1",
+		"Name": "Yesno",
+		"Category": "Speech",
+		"Summary": "Sixty recordings of one individual saying yes or no in Hebrew; each recording is eight words long.",
+		"Downloads": [
+			"https://www.openslr.org/resources/1/waves_yesno.tar.gz"
+		 ]
+
+	},
+	{
+		"Resource": "SLR2",
+		"Name": "OpenFST",
+		"Category": "Software",
+		"Summary": "A mirror of the OpenFst toolkit",
+		"Downloads": [
+			"https://www.openslr.org/resources/2/openfst-1.3.2.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.3.3.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.3.4.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.4.1.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.5.4.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.6.2.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.6.5.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.6.7.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.7.2.tar.gz",
+			"https://www.openslr.org/resources/2/openfst-1.7.9.tar.gz"
+		 ]
+
+	},
+	{
+        "Resource": "SLR3",
+        "Name": "sph2pipe",
+        "Category": "Software",
+        "Summary": "A mirror of the sph2pipe software",
+        "Downloads": [
+			"https://www.openslr.org/resources/3/sph2pipe_v2.5.tar.gz"
+		 ]
+    },
+	{
+        "Resource": "SLR4",
+        "Name": "sctk",
+        "Category": "Software",
+        "Summary": "A mirror of the sctk scoring software",
+        "Downloads": [
+			"https://www.openslr.org/resources/4/sctk-2.4.0-20091110-0958.tar.bz2",
+			"https://www.openslr.org/resources/4/sctk-2.4.0-20091110-0958.tar.gz",
+			"https://www.openslr.org/resources/4/sctk-2.4.8-20130429-2145.tar.bz2",
+			"https://www.openslr.org/resources/4/sctk-2.4.9-20141015-1634Z.tar.bz2",
+			"https://www.openslr.org/resources/4/sctk-2.4.10-20151007-1312Z.tar.bz2"
+		 ]
+    },
+	{
+        "Resource": "SLR5",
+        "Name": "MSU Switchboard transcipts",
+        "Category": "Text",
+        "Summary": "A mirror of the Mississippi State transcripts and lexicon for Switchboard.",
+        "Downloads": [
+			"https://www.openslr.org/resources/5/switchboard_word_alignments.tar.gz",
+			"https://www.openslr.org/resources/5/sw-ms98-dict.text"
+		 ]
+    },
+	{
+        "Resource": "SLR6",
+        "Name": "Vystadial",
+        "Category": "Speech",
+        "Summary": "English and Czech data, mirrored from the Vystadial project",
+        "Downloads": [
+			"https://www.openslr.org/resources/6/data_voip_cs.tgz",
+			"https://www.openslr.org/resources/6/data_voip_en.tgz"
+		 ]
+    },
+	{
+        "Resource": "SLR7",
+        "Name": "TED-LIUM",
+        "Category": "Speech",
+        "Summary": "English speech recognition training corpus from TED talks, created by Laboratoire d’Informatique de l’Université du Maine (LIUM) (mirrored here)",
+        "Downloads": [
+			"https://www.openslr.org/resources/7/TEDLIUM_release1.tar.gz"
+		 ]
+    },
+	{
+        "Resource": "SLR8",
+        "Name": "Sprakbanken",
+        "Category": "Text",
+        "Summary": "Danish pronunciation dictionary generated using eSpeak",
+        "Downloads": [
+			"https://www.openslr.org/resources/8/lexicon-da.tgz",
+			"https://www.openslr.org/resources/8/lexicon-da-nonorm.tgz"
+		 ]
+    },
+	{
+        "Resource": "SLR9",
+        "Name": "The AMI pack",
+        "Category": "Text",
+        "Summary": "Some auxiliary non-speech data used to build AMI systems with Kaldi",
+        "Downloads": [
+			"https://www.openslr.org/resources/9/wordlist.50k.gz"
+		 ]
+    },
+	{
+        "Resource": "SLR10",
+        "Name": "SRE Data",
+        "Category": "Misc",
+        "Summary": "Various files from SRE data that NIST used to host online",
+        "Downloads": [
+			"https://www.openslr.org/resources/10/sre2000-key.tar.gz",
+			"https://www.openslr.org/resources/10/sre04_key.tgz",
+			"https://www.openslr.org/resources/10/sre04_key-v2.txt.gz",
+			"https://www.openslr.org/resources/10/sre05-key-v7b.txt.gz"
+		 ]
+    },
+	{
+        "Resource": "SLR11",
+        "Name": "LibriSpeech language models, vocabulary and G2P models",
+        "Category": "Text",
+        "Summary": "Language modelling resources, for use with the LibriSpeech ASR corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/11/librispeech-lm-corpus.tgz",
+			"https://www.openslr.org/resources/11/librispeech-lm-norm.txt.gz",
+			"https://www.openslr.org/resources/11/librispeech-vocab.txt",
+			"https://www.openslr.org/resources/11/librispeech-lexicon.txt",
+			"https://www.openslr.org/resources/11/3-gram.arpa.gz",
+			"https://www.openslr.org/resources/11/3-gram.pruned.1e-7.arpa.gz",
+			"https://www.openslr.org/resources/11/3-gram.pruned.3e-7.arpa.gz",
+			"https://www.openslr.org/resources/11/4-gram.arpa.gz",
+			"https://www.openslr.org/resources/11/g2p-model-5"
+		 ]
+    },
+    {
+        "Resource": "SLR12",
+        "Name": "LibriSpeech ASR corpus",
+        "Category": "Speech",
+        "Summary": "Large-scale (1000 hours) corpus of read English speech",
+        "Downloads": [
+			"https://www.openslr.org/resources/12/dev-clean.tar.gz",
+			"https://www.openslr.org/resources/12/dev-other.tar.gz",
+			"https://www.openslr.org/resources/12/test-clean.tar.gz",
+			"https://www.openslr.org/resources/12/test-other.tar.gz",
+			"https://www.openslr.org/resources/12/train-clean-100.tar.gz",
+			"https://www.openslr.org/resources/12/train-clean-360.tar.gz",
+			"https://www.openslr.org/resources/12/train-other-500.tar.gz",
+			"https://www.openslr.org/resources/12/intro-disclaimers.tar.gz",
+			"https://www.openslr.org/resources/12/original-mp3.tar.gz",
+			"https://www.openslr.org/resources/12/original-books.tar.gz",
+			"https://www.openslr.org/resources/12/raw-metadata.tar.gz",
+			"https://www.openslr.org/resources/12/md5sum.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR13",
+        "Name": "RWCP Sound Scene Database",
+        "Category": "Speech + Software",
+        "Summary": "A database of recordings of real-world sounds and measured room impulse responses",
+        "Downloads": [
+			"https://www.openslr.org/resources/13/RWCP.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR14",
+        "Name": "BEEP Dictionary",
+        "Category": "Text",
+        "Summary": "Phonemic transcriptions of over 250,000 English words. (British English pronunciations)",
+        "Downloads": [
+			"https://www.openslr.org/resources/14/beep.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR15",
+        "Name": "SRE Speaker List",
+        "Category": "Misc",
+        "Summary": "A list linking speakers across NIST SRE corpra",
+        "Downloads": [
+			"https://www.openslr.org/resources/15/speaker_list.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR16",
+        "Name": "The AMI Corpus",
+        "Category": "Speech",
+        "Summary": "Acoustic speech data and meta-data from The AMI corpus.",
+        "Downloads": [
+			"https://www.openslr.org/resources/16/ami_manual_1.6.1.tar.gz",
+			"https://www.openslr.org/resources/16/headset.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-01.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-02.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-03.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-04.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-05.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-06.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-07.tar.gz",
+			"https://www.openslr.org/resources/16/Array1-08.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR17",
+        "Name": "MUSAN",
+        "Category": "Audio",
+        "Summary": "A corpus of music, speech, and noise",
+        "Downloads": [
+			"https://www.openslr.org/resources/17/musan.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR18",
+        "Name": "THCHS-30",
+        "Category": "Speech",
+        "Summary": "A Free Chinese Speech Corpus Released by CSLT@Tsinghua University",
+        "Downloads": [
+			"https://www.openslr.org/resources/18/data_thchs30.tgz",
+			"https://www.openslr.org/resources/18/test-noise.tgz",
+			"https://www.openslr.org/resources/18/resource.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR19",
+        "Name": "TED-LIUMv2",
+        "Category": "Audio",
+        "Summary": "TED-LIUM corpus release 2, English speech recognition training corpus from TED talks, created by Laboratoire d’Informatique de l’Université du Maine (LIUM) (mirrored here)",
+        "Downloads": [
+			"https://www.openslr.org/resources/19/TEDLIUM_release2.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR20",
+        "Name": "Aachen Impulse Response Database",
+        "Category": "Audio",
+        "Summary": "Aachen Impulse Response database (AIR): a database of room impulse responses (mirrored here)",
+        "Downloads": [
+			"https://www.openslr.org/resources/20/air_database_release_1_4.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR21",
+        "Name": "Spanish Word list",
+        "Category": "Text",
+        "Summary": "A list of words in Spanish with frequency derived from a large corpus (Spanish Gigaword).",
+        "Downloads": [
+			"https://www.openslr.org/resources/21/es_wordlist.json.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR22",
+        "Name": "THUYG-20",
+        "Category": "Speech",
+        "Summary": "A free Uyghur speech database Released by CSLT@Tsinghua University & Xinjiang University",
+        "Downloads": [
+			"https://www.openslr.org/resources/22/data_thuyg20.tar.gz",
+			"https://www.openslr.org/resources/22/data_thuyg20_sre.tar.gz",
+			"https://www.openslr.org/resources/22/test_noise.tar.gz",
+			"https://www.openslr.org/resources/22/test_noise_sre.tar.gz",
+			"https://www.openslr.org/resources/22/resource.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR23",
+        "Name": "NIST LRE 2007 Key",
+        "Category": "Misc",
+        "Summary": "A file containing metadata for the utterances in the LRE 2007 evaluation",
+        "Downloads": [
+			"https://www.openslr.org/resources/23/lre07_key.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR24",
+        "Name": "Iban",
+        "Category": "Speech",
+        "Summary": "Iban language text and speech corpora for ASR",
+        "Downloads": [
+			"https://www.openslr.org/resources/24/iban.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR25",
+        "Name": "ALFFA (African Languages in the Field: speech Fundamentals and Automation)",
+        "Category": "Speech",
+        "Summary": "Amharic, Swahili and Wolof data, mirrored from the ALFFA git repository",
+        "Downloads": [
+			"https://www.openslr.org/resources/25/data_readspeech_am.tar.bz2",
+			"https://www.openslr.org/resources/25/data_broadcastnews_sw.tar.bz2",
+			"https://www.openslr.org/resources/25/data_readspeech_wo.tar.bz2"
+		 ]
+    },
+    {
+        "Resource": "SLR26",
+        "Name": "Simulated Room Impulse Response Database",
+        "Category": "Audio",
+        "Summary": "A database of simulated room impulse responses",
+        "Downloads": [
+			"https://www.openslr.org/resources/26/sim_rir_8k.zip",
+			"https://www.openslr.org/resources/26/sim_rir_16k.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR27",
+        "Name": "Cantab-TEDLIUM Release 1.1 (February 2015)",
+        "Category": "Text",
+        "Summary": "Cantab Research Language models for the TEDLIUM database",
+        "Downloads": [
+			"https://www.openslr.org/resources/27/cantab-TEDLIUM.tar.bz2",
+			"https://www.openslr.org/resources/27/cantab-TEDLIUM-partial.tar.bz2"
+		 ]
+    },
+    {
+        "Resource": "SLR28",
+        "Name": "Room Impulse Response and Noise Database",
+        "Category": "Audio",
+        "Summary": "A database of simulated and real room impulse responses, isotropic and point-source noises. The audio files in this data are all in 16k sampling rate and 16-bit precision.",
+        "Downloads": [
+			"https://www.openslr.org/resources/28/rirs_noises.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR29",
+        "Name": "Sprakbanken_Swe",
+        "Category": "Text",
+        "Summary": "Swedish pronunciation dictionary",
+        "Downloads": [
+			"https://www.openslr.org/resources/29/lexicon-sv.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR30",
+        "Name": "Sinhala TTS",
+        "Category": "Speech",
+        "Summary": "Sinhalese multi-speaker TTS corpora",
+        "Downloads": [
+			"https://www.openslr.org/resources/30/si_lk.tar.gz",
+			"https://www.openslr.org/resources/30/si_lk.lines.txt",
+			"https://www.openslr.org/resources/30/README.txt",
+			"https://www.openslr.org/resources/30/LICENSE.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR31",
+        "Name": "Mini LibriSpeech ASR corpus",
+        "Category": "Speech",
+        "Summary": "Subset of LibriSpeech corpus for purpose of regression testing",
+        "Downloads": [
+			"https://www.openslr.org/resources/31/dev-clean-2.tar.gz",
+			"https://www.openslr.org/resources/31/train-clean-5.tar.gz",
+			"https://www.openslr.org/resources/31/md5sum.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR32",
+        "Name": "High quality TTS data for four South African languages (af, st, tn, xh)",
+        "Category": "Speech",
+        "Summary": "Multi-speaker TTS data for four South African languages, Afrikaans, Sesotho, Setswana and isiXhosa.",
+        "Downloads": [
+			"https://www.openslr.org/resources/32/af_za.tar.gz",
+			"https://www.openslr.org/resources/32/st_za.tar.gz",
+			"https://www.openslr.org/resources/32/tn_za.tar.gz",
+			"https://www.openslr.org/resources/32/xh_za.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR33",
+        "Name": "Aishell",
+        "Category": "Speech",
+        "Summary": "Mandarin data, provided by Beijing Shell Shell Technology Co.,Ltd",
+        "Downloads": [
+			"https://www.openslr.org/resources/33/data_aishell.tgz",
+			"https://www.openslr.org/resources/33/resource_aishell.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR34",
+        "Name": "Santiago Spanish Lexicon",
+        "Category": "Text",
+        "Summary": "A pronouncing dictionary for the Spanish language.",
+        "Downloads": [
+			"https://www.openslr.org/resources/34/santiago.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR35",
+        "Name": "Large Javanese ASR training data set",
+        "Category": "Speech",
+        "Summary": "Javanese ASR training data set containing ~185K utterances.",
+        "Downloads": [
+			"https://www.openslr.org/resources/35/asr_javanese.sha256",
+			"https://www.openslr.org/resources/35/LICENSE",
+			"https://www.openslr.org/resources/35/utt_spk_text.tsv",
+			"https://www.openslr.org/resources/35/asr_javanese_0.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_1.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_2.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_3.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_4.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_5.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_6.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_7.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_8.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_9.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_a.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_b.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_c.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_d.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_e.zip",
+			"https://www.openslr.org/resources/35/asr_javanese_f.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR36",
+        "Name": "Large Sundanese ASR training data set",
+        "Category": "Speech",
+        "Summary": "Sundanese ASR training data set containing ~220K utterances.",
+        "Downloads": [
+			"https://www.openslr.org/resources/36/asr_sundanese.sha256",
+			"https://www.openslr.org/resources/36/LICENSE",
+			"https://www.openslr.org/resources/36/utt_spk_text.tsv",
+			"https://www.openslr.org/resources/36/asr_sundanese_0.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_1.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_2.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_3.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_4.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_5.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_6.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_7.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_8.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_9.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_a.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_b.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_c.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_d.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_e.zip",
+			"https://www.openslr.org/resources/36/asr_sundanese_f.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR37",
+        "Name": "High quality TTS data for Bengali languages",
+        "Category": "Speech",
+        "Summary": "Multi-speaker TTS data for Bangladesh Bengali (bn-BD) and Indian Bengali (bn-IN).",
+        "Downloads": [
+			"https://www.openslr.org/resources/37/bn_bd.zip",
+			"https://www.openslr.org/resources/37/bn_in.zip",
+			"https://www.openslr.org/resources/37/README.txt",
+			"https://www.openslr.org/resources/37/LICENSE.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR38",
+        "Name": "Free ST Chinese Mandarin Corpus",
+        "Category": "Speech",
+        "Summary": "A free Chinese Mandarin corpus by Surfingtech (www.surfing.ai), containing utterances from 855 speakers, 102600 utterances;",
+        "Downloads": [
+			"https://www.openslr.org/resources/38/ST-CMDS-20170001_1-OS.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR39",
+        "Name": "Heroico",
+        "Category": "Speech",
+        "Summary": "Spanish data, mirrored from the LDC",
+        "Downloads": [
+			"https://www.openslr.org/resources/39/LDC2006S37.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR40",
+        "Name": "Zeroth-Korean",
+        "Category": "Speech Corpus for Automatic Speech Recognition",
+        "Summary": "Korean Open-source Speech Corpus for Speech Recognition by Zeroth Project (https://github.com/goodatlas/zeroth)",
+        "Downloads": [
+			"https://www.openslr.org/resources/40/zeroth_korean.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR41",
+        "Name": "High quality TTS data for Javanese.",
+        "Category": "Speech",
+        "Summary": "Multi-speaker TTS data for Javanese (jv-ID)",
+        "Downloads": [
+			"https://www.openslr.org/resources/41/jv_id_female.zip",
+			"https://www.openslr.org/resources/41/jv_id_male.zip",
+			"https://www.openslr.org/resources/41/LICENSE"
+		 ]
+    },
+    {
+        "Resource": "SLR42",
+        "Name": "High quality TTS data for Khmer.",
+        "Category": "Speech",
+        "Summary": "Multi-speaker TTS data for Khmer (km-KH)",
+        "Downloads": [
+			"https://www.openslr.org/resources/42/km_kh_male.zip",
+			"https://www.openslr.org/resources/42/LICENSE"
+		 ]
+    },
+    {
+        "Resource": "SLR43",
+        "Name": "High quality TTS data for Nepali.",
+        "Category": "Speech",
+        "Summary": "Multi-speaker TTS data for Nepali (ne-NP)",
+        "Downloads": [
+			"https://www.openslr.org/resources/43/ne_np_female.zip",
+			"https://www.openslr.org/resources/43/LICENSE"
+		 ]
+    },
+    {
+        "Resource": "SLR44",
+        "Name": "High quality TTS data for Sundanese.",
+        "Category": "Speech",
+        "Summary": "Multi-speaker TTS data for Sundanese (su-ID)",
+        "Downloads": [
+			"https://www.openslr.org/resources/44/su_id_female.zip",
+			"https://www.openslr.org/resources/44/su_id_male.zip",
+			"https://www.openslr.org/resources/44/LICENSE"
+		 ]
+    },
+    {
+        "Resource": "SLR45",
+        "Name": "Free ST American English Corpus",
+        "Category": "Speech",
+        "Summary": "A free American English corpus by Surfingtech (www.surfing.ai), containing utterances from 10 speakers, Each speaker has about 350 utterances;",
+        "Downloads": [
+			"https://www.openslr.org/resources/45/ST-AEDS-20180100_1-OS.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR46",
+        "Name": "Tunisian_MSA",
+        "Category": "Speech",
+        "Summary": "Tunisian Modern Standard Arabic",
+        "Downloads": [
+			"https://www.openslr.org/resources/46/Tunisian_MSA.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR47",
+        "Name": "Primewords Chinese Corpus Set 1",
+        "Category": "Speech",
+        "Summary": "Chinese Mandarin corpus released by Shanghai Primewords Co. Ltd. (www.primewords.cn), containing 100 hours of speech data.",
+        "Downloads": [
+			"https://www.openslr.org/resources/47/primewords_md_2018_set1.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR48",
+        "Name": "MADCAT Arabic data splits",
+        "Category": "Other",
+        "Summary": "Unofficial data splits (dev/train/test) for the MADCAT Arabic LDC corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/48/madcat.dev.raw.lineid",
+			"https://www.openslr.org/resources/48/madcat.test.raw.lineid",
+			"https://www.openslr.org/resources/48/madcat.train.raw.lineid"
+		 ]
+    },
+    {
+        "Resource": "SLR49",
+        "Name": "VoxCeleb Data",
+        "Category": "Misc",
+        "Summary": "Various files for the VoxCeleb datasets",
+        "Downloads": [
+			"https://www.openslr.org/resources/49/voxceleb1_test.txt",
+			"https://www.openslr.org/resources/49/voxceleb1_test_v2.txt",
+			"https://www.openslr.org/resources/49/voxceleb1_sitw_overlap.txt",
+			"https://www.openslr.org/resources/49/vox1_meta.csv",
+			"https://www.openslr.org/resources/49/vox2_meta.csv"
+		 ]
+    },
+    {
+        "Resource": "SLR50",
+        "Name": "MADCAT Chinese data splits",
+        "Category": "Other",
+        "Summary": "Unofficial data splits (dev/train/test) for the MADCAT Chinese LDC corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/50/madcat.dev.raw.lineid",
+			"https://www.openslr.org/resources/50/madcat.test.raw.lineid",
+			"https://www.openslr.org/resources/50/madcat.train.raw.lineid"
+		 ]
+    },
+    {
+        "Resource": "SLR51",
+        "Name": "TED-LIUM Release 3",
+        "Category": "Speech",
+        "Summary": "TED-LIUM corpus release 3",
+        "Downloads": [
+			"https://www.openslr.org/resources/51/TEDLIUM_release-3.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR52",
+        "Name": "Large Sinhala ASR training data set",
+        "Category": "Speech",
+        "Summary": "Sinhala ASR training data set containing ~185K utterances.",
+        "Downloads": [
+			"https://www.openslr.org/resources/52/about.html",
+			"https://www.openslr.org/resources/52/LICENSE",
+			"https://www.openslr.org/resources/52/utt_spk_text.tsv",
+			"https://www.openslr.org/resources/52/asr_sinhala_0.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_1.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_2.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_3.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_4.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_5.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_6.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_7.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_8.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_9.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_a.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_b.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_c.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_d.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_e.zip",
+			"https://www.openslr.org/resources/52/asr_sinhala_f.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR53",
+        "Name": "Large Bengali ASR training data set",
+        "Category": "Speech",
+        "Summary": "Bengali ASR training data set containing ~196K utterances.",
+        "Downloads": [
+			"https://www.openslr.org/resources/53/about.html",
+			"https://www.openslr.org/resources/53/LICENSE",
+			"https://www.openslr.org/resources/53/utt_spk_text.tsv",
+			"https://www.openslr.org/resources/53/asr_bengali_0.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_1.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_2.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_3.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_4.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_5.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_6.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_7.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_8.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_9.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_a.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_b.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_c.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_d.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_e.zip",
+			"https://www.openslr.org/resources/53/asr_bengali_f.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR54",
+        "Name": "Large Nepali ASR training data set",
+        "Category": "Speech",
+        "Summary": "Nepali ASR training data set containing ~157K utterances.",
+        "Downloads": [
+			"https://www.openslr.org/resources/54/about.html",
+			"https://www.openslr.org/resources/54/LICENSE",
+			"https://www.openslr.org/resources/54/utt_spk_text.tsv",
+			"https://www.openslr.org/resources/54/asr_nepali_0.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_1.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_2.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_3.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_4.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_5.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_6.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_7.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_8.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_9.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_a.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_b.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_c.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_d.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_e.zip",
+			"https://www.openslr.org/resources/54/asr_nepali_f.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR55",
+        "Name": "CLMAD",
+        "Category": "Text",
+        "Summary": "A Chinese Language Model Adaptation Dataset (CLMAD).",
+        "Downloads": [
+			"https://www.openslr.org/resources/55/train.tgz",
+			"https://www.openslr.org/resources/55/test.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR56",
+        "Name": "IAM Aachen splits",
+        "Category": "Other",
+        "Summary": "Aachen data splits (train/test/val) for the IAM dataset.",
+        "Downloads": [
+			"https://www.openslr.org/resources/56/splits.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR57",
+        "Name": "African Accented French",
+        "Category": "Speech",
+        "Summary": "Recordings of African Accented French speech.",
+        "Downloads": [
+			"https://www.openslr.org/resources/57/African_Accented_French.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR58",
+        "Name": "Pansori-TEDxKR",
+        "Category": "Speech",
+        "Summary": "Korean speech corpus generated from Korean language TEDx talks",
+        "Downloads": [
+			"https://www.openslr.org/resources/58/pansori-tedxkr-corpus-1.0.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR59",
+        "Name": "ParlamentParla",
+        "Category": "Speech",
+        "Summary": "Catalan speech corpus generated from Catalan Parliamentary sessions",
+        "Downloads": [
+			"https://www.openslr.org/resources/59/parlament_v1.0_clean.tar.gz",
+			"https://www.openslr.org/resources/59/parlament_v1.0_other.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR60",
+        "Name": "LibriTTS corpus",
+        "Category": "Speech",
+        "Summary": "Large-scale corpus of English speech derived from the original materials of the LibriSpeech corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/60/dev-clean.tar.gz",
+			"https://www.openslr.org/resources/60/dev-other.tar.gz",
+			"https://www.openslr.org/resources/60/test-clean.tar.gz",
+			"https://www.openslr.org/resources/60/test-other.tar.gz",
+			"https://www.openslr.org/resources/60/train-clean-100.tar.gz",
+			"https://www.openslr.org/resources/60/train-clean-360.tar.gz",
+			"https://www.openslr.org/resources/60/train-other-500.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR61",
+        "Name": "Crowdsourced high-quality Argentinian Spanish speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains 5739 recordings of native speakers of Spanish",
+        "Downloads": [
+			"https://www.openslr.org/resources/61/about.html",
+			"https://www.openslr.org/resources/61/LICENSE",
+			"https://www.openslr.org/resources/61/line_index_female.tsv",
+			"https://www.openslr.org/resources/61/line_index_male.tsv",
+			"https://www.openslr.org/resources/61/es_es_line_index_weather.tsv",
+			"https://www.openslr.org/resources/61/es_ar_line_index_weather.tsv",
+			"https://www.openslr.org/resources/61/es_ar_female.zip",
+			"https://www.openslr.org/resources/61/es_ar_male.zip",
+			"https://www.openslr.org/resources/61/es_weather_messages.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR62",
+        "Name": "aidatatang_200zh",
+        "Category": "Speech",
+        "Summary": "A Chinese Mandarin speech corpus by Beijing DataTang Technology Co., Ltd, containing 200 hours of speech data from 600 speakers. The transcription accuracy for each sentence is larger than 98%.",
+        "Downloads": [
+			"https://www.openslr.org/resources/62/aidatatang_200zh.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR63",
+        "Name": "Crowdsourced high-quality Malayalam multi-speaker speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of native speakers of Malayalam.",
+        "Downloads": [
+			"https://www.openslr.org/resources/63/about.html",
+			"https://www.openslr.org/resources/63/LICENSE",
+			"https://www.openslr.org/resources/63/line_index_female.tsv",
+			"https://www.openslr.org/resources/63/line_index_male.tsv",
+			"https://www.openslr.org/resources/63/ml_in_female.zip",
+			"https://www.openslr.org/resources/63/ml_in_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR64",
+        "Name": "Crowdsourced high-quality Marathi multi-speaker speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of native speakers of Marathi",
+        "Downloads": [
+			"https://www.openslr.org/resources/64/about.html",
+			"https://www.openslr.org/resources/64/LICENSE",
+			"https://www.openslr.org/resources/64/line_index.tsv",
+			"https://www.openslr.org/resources/64/mr_in_female.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR65",
+        "Name": "Crowdsourced high-quality Tamil multi-speaker speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of native speakers of Tamil.",
+        "Downloads": [
+			"https://www.openslr.org/resources/65/about.html",
+			"https://www.openslr.org/resources/65/LICENSE",
+			"https://www.openslr.org/resources/65/line_index_female.tsv",
+			"https://www.openslr.org/resources/65/line_index_male.tsv",
+			"https://www.openslr.org/resources/65/ta_in_female.zip",
+			"https://www.openslr.org/resources/65/ta_in_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR66",
+        "Name": "Crowdsourced high-quality Telugu multi-speaker speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of native speakers of Telugu.",
+        "Downloads": [
+			"https://www.openslr.org/resources/66/about.html",
+			"https://www.openslr.org/resources/66/LICENSE",
+			"https://www.openslr.org/resources/66/line_index_female.tsv",
+			"https://www.openslr.org/resources/66/line_index_male.tsv",
+			"https://www.openslr.org/resources/66/te_in_female.zip",
+			"https://www.openslr.org/resources/66/te_in_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR67",
+        "Name": "TEDx Spanish Corpus",
+        "Category": "Speech",
+        "Summary": "Spanish data taken from the TEDx Talks",
+        "Downloads": [
+			"https://www.openslr.org/resources/67/tedx_spanish_corpus.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR68",
+        "Name": "MAGICDATA Mandarin Chinese Read Speech Corpus",
+        "Category": "Speech",
+        "Summary": "The corpus by Magic Data Technology Co., Ltd. , containing 755 hours of scripted read speech data from 1080 native speakers of the Mandarin Chinese spoken in mainland China. The sentence transcription accuracy is higher than 98%.",
+        "Downloads": [
+			"https://www.openslr.org/resources/68/train_set.tar.gz",
+			"https://www.openslr.org/resources/68/dev_set.tar.gz",
+			"https://www.openslr.org/resources/68/test_set.tar.gz",
+			"https://www.openslr.org/resources/68/metadata.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR69",
+        "Name": "Crowdsourced high-quality Catalan speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Catalan.",
+        "Downloads": [
+			"https://www.openslr.org/resources/69/about.html",
+			"https://www.openslr.org/resources/69/LICENSE",
+			"https://www.openslr.org/resources/69/line_index_female.tsv",
+			"https://www.openslr.org/resources/69/line_index_male.tsv",
+			"https://www.openslr.org/resources/69/ca_es_female.zip",
+			"https://www.openslr.org/resources/69/ca_es_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR70",
+        "Name": "Crowdsourced high-quality Nigerian English speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Nigerian English.",
+        "Downloads": [
+			"https://www.openslr.org/resources/70/about.html",
+			"https://www.openslr.org/resources/70/LICENSE",
+			"https://www.openslr.org/resources/70/line_index_female.tsv",
+			"https://www.openslr.org/resources/70/line_index_male.tsv",
+			"https://www.openslr.org/resources/70/en_ng_female.zip",
+			"https://www.openslr.org/resources/70/en_ng_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR71",
+        "Name": "Crowdsourced high-quality Chilean Spanish speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Chilean Spanish.",
+        "Downloads": [
+			"https://www.openslr.org/resources/71/about.html",
+			"https://www.openslr.org/resources/71/LICENSE",
+			"https://www.openslr.org/resources/71/line_index_female.tsv",
+			"https://www.openslr.org/resources/71/line_index_male.tsv",
+			"https://www.openslr.org/resources/71/es_cl_female.zip",
+			"https://www.openslr.org/resources/71/es_cl_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR72",
+        "Name": "Crowdsourced high-quality Colombian Spanish speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Colombian Spanish.",
+        "Downloads": [
+			"https://www.openslr.org/resources/72/about.html",
+			"https://www.openslr.org/resources/72/LICENSE",
+			"https://www.openslr.org/resources/72/line_index_female.tsv",
+			"https://www.openslr.org/resources/72/line_index_male.tsv",
+			"https://www.openslr.org/resources/72/es_co_female.zip",
+			"https://www.openslr.org/resources/72/es_co_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR73",
+        "Name": "Crowdsourced high-quality Peruvian Spanish speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Peruvian Spanish.",
+        "Downloads": [
+			"https://www.openslr.org/resources/73/about.html",
+			"https://www.openslr.org/resources/73/LICENSE",
+			"https://www.openslr.org/resources/73/line_index_female.tsv",
+			"https://www.openslr.org/resources/73/line_index_male.tsv",
+			"https://www.openslr.org/resources/73/es_pe_female.zip",
+			"https://www.openslr.org/resources/73/es_pe_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR74",
+        "Name": "Crowdsourced high-quality Puerto Rico Spanish speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Puerto Rico Spanish.",
+        "Downloads": [
+			"https://www.openslr.org/resources/74/about.html",
+			"https://www.openslr.org/resources/74/LICENSE",
+			"https://www.openslr.org/resources/74/line_index_female.tsv",
+			"https://www.openslr.org/resources/74/es_pr_female.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR75",
+        "Name": "Crowdsourced high-quality Venezuelan Spanish speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Venezuelan Spanish.",
+        "Downloads": [
+			"https://www.openslr.org/resources/75/about.html",
+			"https://www.openslr.org/resources/75/LICENSE",
+			"https://www.openslr.org/resources/75/line_index_female.tsv",
+			"https://www.openslr.org/resources/75/line_index_male.tsv",
+			"https://www.openslr.org/resources/75/es_ve_female.zip",
+			"https://www.openslr.org/resources/75/es_ve_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR76",
+        "Name": "Crowdsourced high-quality Basque speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Basque.",
+        "Downloads": [
+			"https://www.openslr.org/resources/76/about.html",
+			"https://www.openslr.org/resources/76/LICENSE",
+			"https://www.openslr.org/resources/76/line_index_female.tsv",
+			"https://www.openslr.org/resources/76/line_index_male.tsv",
+			"https://www.openslr.org/resources/76/eu_es_female.zip",
+			"https://www.openslr.org/resources/76/eu_es_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR77",
+        "Name": "Crowdsourced high-quality Galician speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Galician.",
+        "Downloads": [
+			"https://www.openslr.org/resources/77/about.html",
+			"https://www.openslr.org/resources/77/LICENSE",
+			"https://www.openslr.org/resources/77/line_index_female.tsv",
+			"https://www.openslr.org/resources/77/line_index_male.tsv",
+			"https://www.openslr.org/resources/77/gl_es_female.zip",
+			"https://www.openslr.org/resources/77/gl_es_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR78",
+        "Name": "Crowdsourced high-quality Gujarati multi-speaker speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of native speakers of Gujarati.",
+        "Downloads": [
+			"https://www.openslr.org/resources/78/about.html",
+			"https://www.openslr.org/resources/78/LICENSE",
+			"https://www.openslr.org/resources/78/line_index_female.tsv",
+			"https://www.openslr.org/resources/78/line_index_male.tsv",
+			"https://www.openslr.org/resources/78/gu_in_female.zip",
+			"https://www.openslr.org/resources/78/gu_in_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR79",
+        "Name": "Crowdsourced high-quality Kannada multi-speaker speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of native speakers of Kannada.",
+        "Downloads": [
+			"https://www.openslr.org/resources/79/about.html",
+			"https://www.openslr.org/resources/79/LICENSE",
+			"https://www.openslr.org/resources/79/line_index_female.tsv",
+			"https://www.openslr.org/resources/79/line_index_male.tsv",
+			"https://www.openslr.org/resources/79/kn_in_female.zip",
+			"https://www.openslr.org/resources/79/kn_in_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR80",
+        "Name": "Crowdsourced high-quality Burmese speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Burmese.",
+        "Downloads": [
+			"https://www.openslr.org/resources/80/about.html",
+			"https://www.openslr.org/resources/80/LICENSE",
+			"https://www.openslr.org/resources/80/line_index_female.tsv",
+			"https://www.openslr.org/resources/80/my_mm_female.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR81",
+        "Name": "Small Audio Clips",
+        "Category": "Speech",
+        "Summary": "Contains 20 one-second audio clips from various sources, for testing compression algorithms",
+        "Downloads": [
+			"https://www.openslr.org/resources/81/samples.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR82",
+        "Name": "CN-Celeb",
+        "Category": "Speech",
+        "Summary": "A Free Chinese Speaker Recognition Corpus Released by CSLT@Tsinghua University",
+        "Downloads": [
+			"https://www.openslr.org/resources/82/cn-celeb_v2.tar.gz",
+			"https://www.openslr.org/resources/82/cn-celeb2_v2.tar.gzaa",
+			"https://www.openslr.org/resources/82/cn-celeb2_v2.tar.gzab",
+			"https://www.openslr.org/resources/82/cn-celeb2_v2.tar.gzac"
+		 ]
+    },
+    {
+        "Resource": "SLR83",
+        "Name": "Crowdsourced high-quality UK and Ireland English Dialect speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains male and female recordings of English from various dialects of the UK and Ireland.",
+        "Downloads": [
+			"https://www.openslr.org/resources/83/about.html",
+			"https://www.openslr.org/resources/83/LICENSE",
+			"https://www.openslr.org/resources/83/line_index_all.csv",
+			"https://www.openslr.org/resources/83/dialect_info.txt",
+			"https://www.openslr.org/resources/83/irish_english_male.zip",
+			"https://www.openslr.org/resources/83/midlands_english_female.zip",
+			"https://www.openslr.org/resources/83/midlands_english_male.zip",
+			"https://www.openslr.org/resources/83/northern_english_female.zip",
+			"https://www.openslr.org/resources/83/northern_english_male.zip",
+			"https://www.openslr.org/resources/83/scottish_english_female.zip",
+			"https://www.openslr.org/resources/83/scottish_english_male.zip",
+			"https://www.openslr.org/resources/83/southern_english_female.zip",
+			"https://www.openslr.org/resources/83/southern_english_male.zip",
+			"https://www.openslr.org/resources/83/welsh_english_female.zip",
+			"https://www.openslr.org/resources/83/welsh_english_male.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR84",
+        "Name": "ScribbleLens",
+        "Category": "Handwriting",
+        "Summary": "Dutch cursive, 16-18th century handwritings, pages and lines, for (un)supervised AI and other research.",
+        "Downloads": [
+			"https://www.openslr.org/resources/84/scribblelens.corpus.v1.2.zip",
+			"https://www.openslr.org/resources/84/scribblelens.supplement.original.pages.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR85",
+        "Name": "HI-MIA",
+        "Category": "Speech",
+        "Summary": "A far-field text-dependent speaker verification database for AISHELL Speaker Verification Challenge 2019",
+        "Downloads": [
+			"https://www.openslr.org/resources/85/train.tar.gz",
+			"https://www.openslr.org/resources/85/dev.tar.gz",
+			"https://www.openslr.org/resources/85/test.tar.gz",
+			"https://www.openslr.org/resources/85/test_v2.tar.gz",
+			"https://www.openslr.org/resources/85/filename_mapping.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR86",
+        "Name": "Crowdsourced high-quality Yoruba speech data set.",
+        "Category": "Speech",
+        "Summary": "Data set which contains recordings of Yoruba.",
+        "Downloads": [
+			"https://www.openslr.org/resources/86/about.html",
+			"https://www.openslr.org/resources/86/LICENSE",
+			"https://www.openslr.org/resources/86/line_index_female.tsv",
+			"https://www.openslr.org/resources/86/line_index_male.tsv",
+			"https://www.openslr.org/resources/86/yo_ng_female.zip",
+			"https://www.openslr.org/resources/86/yo_ng_male.zip",
+			"https://www.openslr.org/resources/86/annotation_info.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR87",
+        "Name": "MobvoiHotwords",
+        "Category": "Speech",
+        "Summary": "Chinese hotwords detection dataset, provided by Mobvoi CO.,LTD",
+        "Downloads": [
+			"https://www.openslr.org/resources/87/mobvoi_hotword_dataset.tgz",
+			"https://www.openslr.org/resources/87/mobvoi_hotword_dataset_resources.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR88",
+        "Name": "Att-HACK",
+        "Category": "Speech",
+        "Summary": "French Expressive Speech Database with Social Attitudes",
+        "Downloads": [
+			"https://www.openslr.org/resources/88/wav.tgz",
+			"https://www.openslr.org/resources/88/txt.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR89",
+        "Name": "Yoloxóchitl-Mixtec",
+        "Category": "Speech",
+        "Summary": "Yolóxochitl Mixtec Speech with Transcription",
+        "Downloads": [
+			"https://www.openslr.org/resources/89/Yoloxochitl-Mixtec-Data.tgz",
+			"https://www.openslr.org/resources/89/Yoloxochitl-Mixtec-Manifest.tgz",
+			"https://www.openslr.org/resources/89/Novice-Transcription-Correction.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR92",
+        "Name": "Puebla-Nahuatl",
+        "Category": "Speech",
+        "Summary": "Puebla Nahuatl Speech with Transcription",
+        "Downloads": [
+			"https://www.openslr.org/resources/92/Puebla-Nahuatl-Manifest.tgz",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part00",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part01",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part02",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part03",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part04",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part05",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part06",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part07",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part08",
+			"https://www.openslr.org/resources/92/Sound-Files-Puebla-Nahuatl.tgz.part09",
+			"https://www.openslr.org/resources/92/SpeechTranslation_Nahuatl_Manifest.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR93",
+        "Name": "AISHELL-3",
+        "Category": "Speech",
+        "Summary": "Mandarin data, provided by Beijing Shell Shell Technology Co., Ltd.",
+        "Downloads": [
+			"https://www.openslr.org/resources/93/data_aishell3.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR94",
+        "Name": "Multilingual LibriSpeech (MLS)",
+        "Category": "Speech",
+        "Summary": "A large multilingual corpus derived from LibriVox audiobooks",
+        "Downloads": [
+			"https://dl.fbaipublicfiles.com/mls/mls_english_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_german_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_dutch_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_french_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_spanish_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_italian_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_portuguese_opus.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_polish_opus.tar.gz",
+
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_english.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_german.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_dutch.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_french.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_spanish.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_italian.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_portuguese.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/mls_lm_polish.tar.gz",
+
+			"https://dl.fbaipublicfiles.com/mls/lv_text.tar.gz",
+			"https://dl.fbaipublicfiles.com/mls/unrated_transcripts.tar.gz",
+
+            "https://dl.fbaipublicfiles.com/mls/md5sum.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR95",
+        "Name": "Thorsten Müller (German Neutral-TTS dataset)",
+        "Category": "Speech",
+        "Summary": "Free single german speaker dataset (> 23 hours) by Thorsten Müller (voice) and Dominik Kreutz (audio optimization) for tts training",
+        "Downloads": [
+			"https://www.openslr.org/resources/95/thorsten-de_v02.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR96",
+        "Name": "Russian LibriSpeech (RuLS)",
+        "Category": "Speech",
+        "Summary": "This dataset is based on LibriVox audiobooks",
+        "Downloads": [
+			"https://www.openslr.org/resources/96/ruls_data.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR97",
+        "Name": "Deeply Korean read speech corpus",
+        "Category": "Speech",
+        "Summary": "Pairs of Korean reading the scripts with 3 text sentiments using 3 vocal sentiments. Recorded in 3 types of places, at 3 distinct distances, with 2 types of smartphone.",
+        "Downloads": [
+			"https://www.openslr.org/resources/97/KoreanReadSpeechCorpus.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR98",
+        "Name": "Deeply parent-child vocal interaction dataset",
+        "Category": "Speech",
+        "Summary": "The interaction of pairs of parent and child(reading fairy tales, singing children’s songs, conversing, and others).Recorded in 3 types of places, at 3 distinct distances, with 2 types of smartphone.",
+        "Downloads": [
+			"https://www.openslr.org/resources/98/Parent-ChildVocalInteraction.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR99",
+        "Name": "Deeply Nonverbal Vocalization Dataset",
+        "Category": "Audio",
+        "Summary": "A human nonverbal vocal sound dataset by Deeply Inc.",
+        "Downloads": [
+			"https://www.openslr.org/resources/99/NonverbalVocalization.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR100",
+        "Name": "Multilingual TEDx",
+        "Category": "Speech",
+        "Summary": "a multilingual corpus of TEDx talks for speech recognition and translation",
+        "Downloads": [
+			"https://www.openslr.org/resources/100/mtedx_es.tgz",
+			"https://www.openslr.org/resources/100/mtedx_fr.tgz",
+			"https://www.openslr.org/resources/100/mtedx_pt.tgz",
+			"https://www.openslr.org/resources/100/mtedx_it.tgz",
+			"https://www.openslr.org/resources/100/mtedx_ru.tgz",
+			"https://www.openslr.org/resources/100/mtedx_el.tgz",
+			"https://www.openslr.org/resources/100/mtedx_ar.tgz",
+			"https://www.openslr.org/resources/100/mtedx_de.tgz",
+			"https://www.openslr.org/resources/100/mtedx_es-en.tgz",
+			"https://www.openslr.org/resources/100/mtedx_es-fr.tgz",
+			"https://www.openslr.org/resources/100/mtedx_es-it.tgz",
+			"https://www.openslr.org/resources/100/mtedx_es-pt.tgz",
+			"https://www.openslr.org/resources/100/mtedx_fr-en.tgz",
+			"https://www.openslr.org/resources/100/mtedx_fr-es.tgz",
+			"https://www.openslr.org/resources/100/mtedx_fr-pt.tgz",
+			"https://www.openslr.org/resources/100/mtedx_pt-en.tgz",
+			"https://www.openslr.org/resources/100/mtedx_pt-es.tgz",
+			"https://www.openslr.org/resources/100/mtedx_it-en.tgz",
+			"https://www.openslr.org/resources/100/mtedx_it-es.tgz",
+			"https://www.openslr.org/resources/100/mtedx_ru-en.tgz",
+			"https://www.openslr.org/resources/100/mtedx_el-en.tgz",
+			"https://www.openslr.org/resources/100/mtedx_iwslt2021.tgz",
+			"https://www.openslr.org/resources/100/MTEDx-french-talks-gender-annotation.csv"
+		 ]
+    },
+    {
+        "Resource": "SLR101",
+        "Name": "speechocean762",
+        "Category": "Speech",
+        "Summary": "Pronunciation scoring dataset, labeled independently by five human experts",
+        "Downloads": [
+			"https://www.openslr.org/resources/101/speechocean762.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR102",
+        "Name": "Kazakh Speech Corpus (KSC)",
+        "Category": "Speech",
+        "Summary": "A crowdsourced open-source Kazakh speech corpus developed by ISSAI (330 hours)",
+        "Downloads": [
+			"https://www.openslr.org/resources/102/ISSAI_KSC_335RS_v1.1_flac.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR103",
+        "Name": "Multilingual and code-switching ASR Challenge Dataset - sub-task1",
+        "Category": "Speech",
+        "Summary": "Datasets for sub-task1 in Multilingual and code-switching ASR challenges for low resource Indian languages - MUCS 2021 (https://navana-tech.github.io/MUCS2021/)",
+        "Downloads": [
+			"https://www.openslr.org/resources/103/Hindi_train.tar.gz",
+			"https://www.openslr.org/resources/103/Hindi_test.tar.gz",
+			"https://www.openslr.org/resources/103/Marathi_train.tar.gz",
+			"https://www.openslr.org/resources/103/Marathi_test.tar.gz",
+			"https://www.openslr.org/resources/103/Odia_train.tar.gz",
+			"https://www.openslr.org/resources/103/Odia_test.tar.gz",
+			"https://www.openslr.org/resources/103/subtask1_blindtest_wReadme.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR104",
+        "Name": "Multilingual and code-switching ASR Challenge Dataset - sub-task2",
+        "Category": "Speech",
+        "Summary": "Datasets for sub-task2 in Multilingual and code-switching ASR challenges for low resource Indian languages - MUCS 2021 (https://navana-tech.github.io/MUCS2021/)",
+        "Downloads": [
+			"https://www.openslr.org/resources/104/Hindi-English_train.tar.gz",
+			"https://www.openslr.org/resources/104/Hindi-English_test.tar.gz",
+			"https://www.openslr.org/resources/104/Bengali-English_train.tar.gz",
+			"https://www.openslr.org/resources/104/Bengali-English_test.tar.gz",
+			"https://www.openslr.org/resources/104/subtask2_blindtest_wReadme.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR105",
+        "Name": "nicolingua-0003-west-african-radio-corpus",
+        "Category": "Speech",
+        "Summary": "West African Radio Corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/105/nicolingua-0003-west-african-radio-corpus.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR106",
+        "Name": "nicolingua-0004-west-african-va-asr-corpus",
+        "Category": "Speech",
+        "Summary": "West African Virtual Assistant Speech Recognition Corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/106/nicolingua-0004-west-african-va-asr-corpus.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR107",
+        "Name": "Totonac Resources",
+        "Category": "Speech",
+        "Summary": "Totonac Speech with Transcription",
+        "Downloads": [
+			"https://www.openslr.org/resources/107/Deposit-Totonaco-for-ASR-Community.pdf",
+			"https://www.openslr.org/resources/107/Amith-Lopez_Totonac-recordings-northern-Puebla-and-adjacent-Veracruz_Metadata.xml",
+			"https://www.openslr.org/resources/107/Totonac_Corpus.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR108",
+        "Name": "MediaSpeech",
+        "Category": "Speech",
+        "Summary": "French, Arabic, Turkish and Spanish media speech datasets",
+        "Downloads": [
+			"https://www.openslr.org/resources/108/AR.tgz",
+			"https://www.openslr.org/resources/108/ES.tgz",
+			"https://www.openslr.org/resources/108/FR.tgz",
+			"https://www.openslr.org/resources/108/TR.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR109",
+        "Name": "Hi-Fi Multi-Speaker English TTS Dataset (Hi-Fi TTS)",
+        "Category": "Speech",
+        "Summary": "A multi-speaker English dataset for training text-to-speech models",
+        "Downloads": [
+			"https://www.openslr.org/resources/109/hi_fi_tts_v0.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR110",
+        "Name": "Thorsten Müller (German Emotional-TTS dataset)",
+        "Category": "Speech",
+        "Summary": "Free EMOTIONAL single german speaker dataset (Neutral, Disgusted, Angry, Amused, Surprised, Sleepy, Drunk, Whispering) by Thorsten Müller (voice) and Dominik Kreutz (audio optimization) for TTS training",
+        "Downloads": [
+			"https://www.openslr.org/resources/110/thorsten-emotional_v02.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR111",
+        "Name": "AISHELL-4",
+        "Category": "Speech",
+        "Summary": "A Free Mandarin Multi-channel Meeting Speech Corpus, provided by Beijing Shell Shell Technology Co.,Ltd",
+        "Downloads": [
+			"https://www.openslr.org/resources/111/train_L.tar.gz",
+			"https://www.openslr.org/resources/111/train_M.tar.gz",
+			"https://www.openslr.org/resources/111/train_S.tar.gz",
+			"https://www.openslr.org/resources/111/test.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR112",
+        "Name": "Samromur 21.05",
+        "Category": "Speech",
+        "Summary": "Samrómur Icelandic Speech corpus approved for release in May 2021",
+        "Downloads": [
+			"https://www.openslr.org/resources/112/samromur_21.05.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR113",
+        "Name": "SEOUL CORPUS",
+        "Category": "Speech",
+        "Summary": "The Korean Corpus of Spontaneous Speech (aka, Seoul Corpus), created from the NRF(Korea)-funded project",
+        "Downloads": [
+			"https://www.openslr.org/resources/113/readme.tgz",
+			"https://www.openslr.org/resources/113/label.tgz",
+			"https://www.openslr.org/resources/113/sound.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR114",
+        "Name": "Golos",
+        "Category": "Speech",
+        "Summary": "Russian ASR dataset (1240 hours) with trained acoustic and language models",
+        "Downloads": [
+			"https://www.openslr.org/resources/114/golos_opus.tar.gz",
+			"https://www.openslr.org/resources/114/QuartzNet15x5_golos.nemo.gz",
+			"https://www.openslr.org/resources/114/kenlms.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR115",
+        "Name": "EmoV_DB",
+        "Category": "Speech",
+        "Summary": "a database of emotional speech intended to be open-sourced and used for synthesis and generation purpose. It contains data for male and female actors in English (https://github.com/numediart/EmoV-DB)",
+        "Downloads": [
+			"https://www.openslr.org/resources/115/bea_Amused.tar.gz",
+			"https://www.openslr.org/resources/115/bea_Angry.tar.gz",
+			"https://www.openslr.org/resources/115/bea_Disgusted.tar.gz",
+			"https://www.openslr.org/resources/115/bea_Neutral.tar.gz",
+			"https://www.openslr.org/resources/115/bea_Sleepy.tar.gz",
+			"https://www.openslr.org/resources/115/jenie_Amused.tar.gz",
+			"https://www.openslr.org/resources/115/jenie_Angry.tar.gz",
+			"https://www.openslr.org/resources/115/jenie_Disgusted.tar.gz",
+			"https://www.openslr.org/resources/115/jenie_Neutral.tar.gz",
+			"https://www.openslr.org/resources/115/jenie_Sleepy.tar.gz",
+			"https://www.openslr.org/resources/115/josh_Amused.tar.gz",
+			"https://www.openslr.org/resources/115/josh_Neutral.tar.gz",
+			"https://www.openslr.org/resources/115/josh_Sleepy.tar.gz",
+			"https://www.openslr.org/resources/115/sam_Amused.tar.gz",
+			"https://www.openslr.org/resources/115/sam_Angry.tar.gz",
+			"https://www.openslr.org/resources/115/sam_Disgusted.tar.gz",
+			"https://www.openslr.org/resources/115/sam_Neutral.tar.gz",
+			"https://www.openslr.org/resources/115/sam_Sleepy.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR116",
+        "Name": "Samrómur Queries 21.12",
+        "Category": "Speech",
+        "Summary": "Samrómur Icelandic Speech corpus focused on queries and approved for release in December 2021",
+        "Downloads": [
+			"https://www.openslr.org/resources/116/samromur_queries_21.12.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR117",
+        "Name": "Samrómur Children 21.09",
+        "Category": "Speech",
+        "Summary": "Samrómur Icelandic Speech from children (ages 4-17 years) approved for release in September 2021",
+        "Downloads": [
+			"https://www.openslr.org/resources/117/samromur_children_21.09.zip"
+		 ]
+    },
+    {
+        "Resource": "SLR118",
+        "Name": "1111 Hours Hindi ASR Challenge",
+        "Category": "Speech",
+        "Summary": "Datasets for 1111 Hours Hindi ASR Challenge Closed, Self Supervised Closed and Open - 2022 (https://sites.google.com/view/gramvaaniasrchallenge/home)",
+        "Downloads": [
+			"https://www.openslr.org/resources/118/GV_Train_100h.tar.gz",
+			"https://www.openslr.org/resources/118/GV_Dev_5h.tar.gz",
+			"https://www.openslr.org/resources/118/GV_Eval_3h.tar.gz",
+			"https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part1.tar.gz",
+			"https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part2.tar.gz",
+			"https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part3.tar.gz",
+			"https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part4.tar.gz",
+			"https://www.openslr.org/resources/118/Gramvaani_1000hrData_Part5.tar.gz",
+			"https://www.openslr.org/resources/118/Metadata.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR119",
+        "Name": "AliMeeting",
+        "Category": "Speech",
+        "Summary": "A Free Mandarin Multi-channel Meeting Speech Corpus, provided by Alibaba Group",
+        "Downloads": [
+			"https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Train_Ali_far.tar.gz",
+			"https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Train_Ali_near.tar.gz",
+			"https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Eval_Ali.tar.gz",
+			"https://speech-lab-share-data.oss-cn-shanghai.aliyuncs.com/AliMeeting/openlr/Test_Ali.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR120",
+        "Name": "HI-MIA-CW",
+        "Category": "Speech",
+        "Summary": "A Free Mandarin Supplemental Speech Corpus to HI-MIA Database, whose contents are negative samples for wake-up words 'Hi, Mia'.",
+        "Downloads": [
+			"https://www.openslr.org/resources/120/data.tgz",
+			"https://www.openslr.org/resources/120/resource.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR121",
+        "Name": "WenetSpeech",
+        "Category": "Speech",
+        "Summary": "A 10000+ Hours Multi-Domain Mandarin Corpus for Speech Recognition",
+        "Downloads": [
+
+		 ]
+    },
+    {
+        "Resource": "SLR122",
+        "Name": "Kashmiri Data Corpus",
+        "Category": "Speech",
+        "Summary": "An audio and text corpus for the Kashmiri language",
+        "Downloads": [
+			"https://www.openslr.org/resources/122/kashmiri.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR123",
+        "Name": "MAGICDATA Mandarin Chinese Conversational Speech Corpus",
+        "Category": "Speech",
+        "Summary": "The corpus by Magic Data Technology Co., Ltd. , containing 180 hours of rich annotated Mandarin spontaneous conversational speech data.",
+        "Downloads": [
+			"https://www.openslr.org/resources/123/MagicData-RAMC.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR124",
+        "Name": "TIBMD@MUC speech data set",
+        "Category": "Speech",
+        "Summary": "A Tibetan multi-dialect speech data ( 84.33 hours)",
+        "Downloads": [
+			"https://www.openslr.org/resources/124/Tibetan_speech_data.tgz"
+		 ]
+    },
+    {
+        "Resource": "SLR125",
+        "Name": "Basic LAnguage Resource Kit 1.0 for Faroese",
+        "Category": "Speech",
+        "Summary": "Faroese Speech corpus approved for release in July 2022",
+        "Downloads": [
+			"https://www.openslr.org/resources/125/BLARK_1.0_update.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR126",
+        "Name": "IISc-MILE Kannada ASR Corpus",
+        "Category": "Speech",
+        "Summary": "Kannada transcribed speech corpus for ASR",
+        "Downloads": [
+			"https://www.openslr.org/resources/126/mile_kannada_train.tar.gz",
+			"https://www.openslr.org/resources/126/mile_kannada_test.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR127",
+        "Name": "IISc-MILE Tamil ASR Corpus",
+        "Category": "Speech",
+        "Summary": "Tamil transcribed speech corpus for ASR",
+        "Downloads": [
+			"https://www.openslr.org/resources/127/mile_tamil_asr_corpus.tar.gz"
+		 ]
+    },
+    {
+        "Resource": "SLR128",
+        "Name": "Samrómur Unverified 22.07",
+        "Category": "Speech",
+        "Summary": "Samrómur Icelandic Speech, 2,200 hours of mostly unverified data approved for release in July 2022",
+        "Downloads": [
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.zip",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z01",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z02",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z03",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z04",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z05",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z06",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z07",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z08",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z09",
+			"https://www.openslr.org/resources/128/samromur_unverified_22.07.z10",
+			"https://www.openslr.org/resources/128/samromur_unverified_md5sums.txt"
+		 ]
+    },
+    {
+        "Resource": "SLR129",
+        "Name": "BibleTTS",
+        "Category": "Speech",
+        "Summary": "A large, high-fidelity, multilingual, and uniquely African speech corpus",
+        "Downloads": [
+			"https://www.openslr.org/resources/129/akuapem-twi.tgz",
+			"https://www.openslr.org/resources/129/asante-twi.tgz",
+			"https://www.openslr.org/resources/129/ewe.tgz",
+			"https://www.openslr.org/resources/129/hausa.tgz",
+			"https://www.openslr.org/resources/129/lingala.tgz",
+			"https://www.openslr.org/resources/129/yoruba.tgz"
+		 ]
+    }
+]
