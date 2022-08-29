@@ -286,7 +286,8 @@ dag:
       args:
         task_id: "upload_openslr_data_to_gcs_batch23"
         bash_command: |
-          wget https://www.openslr.org/resources/16/Array1-08.tar.gz -O $openslr_data_dir/SLR16/Array1-08.tar.genv:
+          wget https://www.openslr.org/resources/16/Array1-08.tar.gz -O $openslr_data_dir/SLR16/Array1-08.tar.gz
+        env:
           openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
 
     - operator: "BashOperator"
@@ -294,7 +295,8 @@ dag:
       args:
         task_id: "upload_openslr_data_to_gcs_batch24"
         bash_command: |
-          wget https://www.openslr.org/resources/17/musan.tar.gz -O $openslr_data_dir/SLR17/musan.tar.genv:
+          wget https://www.openslr.org/resources/17/musan.tar.gz -O $openslr_data_dir/SLR17/musan.tar.gz
+        env:
           openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
 
     - operator: "BashOperator"
@@ -313,7 +315,8 @@ dag:
       args:
         task_id: "upload_openslr_data_to_gcs_batch26"
         bash_command: |
-          wget https://www.openslr.org/resources/19/TEDLIUM_release2.tar.gz -O $openslr_data_dir/SLR19/TEDLIUM_release2.tar.genv:
+          wget https://www.openslr.org/resources/19/TEDLIUM_release2.tar.gz -O $openslr_data_dir/SLR19/TEDLIUM_release2.tar.gz
+        env:
           openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
 
     - operator: "BashOperator"
@@ -1544,7 +1547,7 @@ dag:
           wget https://www.openslr.org/resources/129/lingala.tgz -O $openslr_data_dir/SLR129/lingala.tgz
           wget https://www.openslr.org/resources/129/yoruba.tgz -O $openslr_data_dir/SLR129/yoruba.tgz
       env:
-          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+        openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
 
     - operator: "BashOperator"
       description: "upload openslr data to GCS"
@@ -1635,7 +1638,7 @@ dag:
         bash_command: |
           wget https://www.openslr.org/resources/68/train_set.tar.gz -O $openslr_data_dir/SLR68/train_set.tar.gz
       env:
-          openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
+        openslr_data_dir: /home/airflow/gcs/data/openslr/openslr
 
     - operator: "BashOperator"
       description: "upload openslr data to GCS"
@@ -1684,4 +1687,3 @@ dag:
 
   graph_paths:
     - "create_folder >> upload_openslr_data_to_gcs_batch1 >> upload_openslr_data_to_gcs_batch2 >> upload_openslr_data_to_gcs_batch3 >> upload_openslr_data_to_gcs_batch4 >> upload_openslr_data_to_gcs_batch5 >> upload_openslr_data_to_gcs_batch6 >> upload_openslr_data_to_gcs_batch7 >> upload_openslr_data_to_gcs_batch8 >> upload_openslr_data_to_gcs_batch9 >> upload_openslr_data_to_gcs_batch10 >> upload_openslr_data_to_gcs_batch11 >> upload_openslr_data_to_gcs_batch12 >> upload_openslr_data_to_gcs_batch13 >> upload_openslr_data_to_gcs_batch14 >> upload_openslr_data_to_gcs_batch15 >> upload_openslr_data_to_gcs_batch16 >> upload_openslr_data_to_gcs_batch17 >> upload_openslr_data_to_gcs_batch18 >> upload_openslr_data_to_gcs_batch19 >> upload_openslr_data_to_gcs_batch20 >> upload_openslr_data_to_gcs_batch21 >> upload_openslr_data_to_gcs_batch22 >> upload_openslr_data_to_gcs_batch23 >> upload_openslr_data_to_gcs_batch24 >> upload_openslr_data_to_gcs_batch25 >> upload_openslr_data_to_gcs_batch26 >> upload_openslr_data_to_gcs_batch27 >> upload_openslr_data_to_gcs_batch28 >> upload_openslr_data_to_gcs_batch29 >> upload_openslr_data_to_gcs_batch30 >> upload_openslr_data_to_gcs_batch31 >> upload_openslr_data_to_gcs_batch32 >> upload_openslr_data_to_gcs_batch33 >> upload_openslr_data_to_gcs_batch34 >> upload_openslr_data_to_gcs_batch35 >> upload_openslr_data_to_gcs_batch36 >> upload_openslr_data_to_gcs_batch37 >> upload_openslr_data_to_gcs_batch38 >> upload_openslr_data_to_gcs_batch39 >> upload_openslr_data_to_gcs_batch40 >> upload_openslr_data_to_gcs_batch41 >> upload_openslr_data_to_gcs_batch42 >> upload_openslr_data_to_gcs_batch43 >> upload_openslr_data_to_gcs_batch44 >> upload_openslr_data_to_gcs_batch45 >> upload_openslr_data_to_gcs_batch46 >> upload_openslr_data_to_gcs_batch47 >> upload_openslr_data_to_gcs_batch48 >> upload_openslr_data_to_gcs_batch49 >> upload_openslr_data_to_gcs_batch50 >> upload_openslr_data_to_gcs_batch51 >> upload_openslr_data_to_gcs_batch52 >> upload_openslr_data_to_gcs_batch53 >> upload_openslr_data_to_gcs_batch54 >> upload_openslr_data_to_gcs_batch55 >> upload_openslr_data_to_gcs_batch56 >> upload_openslr_data_to_gcs_batch57 >> upload_openslr_data_to_gcs_batch58 >> upload_openslr_data_to_gcs_batch59 >> upload_openslr_data_to_gcs_batch60 >> upload_openslr_data_to_gcs_batch61 >> upload_openslr_data_to_gcs_batch62 >> upload_openslr_data_to_gcs_batch63 >> upload_openslr_data_to_gcs_batch64 >> upload_openslr_data_to_gcs_batch65 >> upload_openslr_data_to_gcs_batch66 >> upload_openslr_data_to_gcs_batch67 >> upload_openslr_data_to_gcs_batch68 >> upload_openslr_data_to_gcs_batch69 >> upload_openslr_data_to_gcs_batch70 >> upload_openslr_data_to_gcs_batch71 >> upload_openslr_data_to_gcs_batch72 >> upload_openslr_data_to_gcs_batch73 >> upload_openslr_data_to_gcs_batch74 >> upload_openslr_data_to_gcs_batch75 >> upload_openslr_data_to_gcs_batch76 >> upload_openslr_data_to_gcs_batch77 >> upload_openslr_data_to_gcs_batch78 >> upload_openslr_data_to_gcs_batch79 >> upload_openslr_data_to_gcs_batch80 >> upload_openslr_data_to_gcs_batch81 >> upload_openslr_data_to_gcs_batch82 >> upload_openslr_data_to_gcs_batch83 >> upload_openslr_data_to_gcs_batch84 >> upload_openslr_data_to_gcs_batch85 >> upload_openslr_data_to_gcs_batch86 >> upload_openslr_data_to_gcs_batch87 >> upload_openslr_data_to_gcs_batch88 >> upload_openslr_data_to_gcs_batch89 >> upload_openslr_data_to_gcs_batch90 >> upload_openslr_data_to_gcs_batch91 >> upload_openslr_data_to_gcs_batch92 >> upload_openslr_data_to_gcs_batch93 >> upload_openslr_data_to_gcs_batch94 >> upload_openslr_data_to_gcs_batch95 >> upload_openslr_data_to_gcs_batch96 >> upload_openslr_data_to_gcs_batch97 >> upload_openslr_data_to_gcs_batch98 >> upload_openslr_data_to_gcs_batch99 >> upload_openslr_data_to_gcs_batch100 >> upload_openslr_data_to_gcs_batch101 >> upload_openslr_data_to_gcs_batch102 >> upload_openslr_data_to_gcs_batch103 >> upload_openslr_data_to_gcs_batch104 >> upload_openslr_data_to_gcs_batch105 >> upload_openslr_data_to_gcs_batch106 >> upload_openslr_data_to_gcs_batch107 >> upload_openslr_data_to_gcs_batch108 >> upload_openslr_data_to_gcs_batch109 >> upload_openslr_data_to_gcs_batch110 >> upload_openslr_data_to_gcs_batch111 >> upload_openslr_data_to_gcs_batch112 >> upload_openslr_data_to_gcs_batch113 >> upload_openslr_data_to_gcs_batch114 >> upload_openslr_data_to_gcs_batch115 >> upload_openslr_data_to_gcs_batch116 >> upload_openslr_data_to_gcs_batch117 >> upload_openslr_data_to_gcs_batch118 >> upload_openslr_data_to_gcs_batch119 >> upload_openslr_data_to_gcs_batch120 >> upload_openslr_data_to_gcs_batch121 >> upload_openslr_data_to_gcs_batch122 >> upload_openslr_data_to_gcs_batch123 >> upload_openslr_data_to_gcs_batch124 >> upload_openslr_data_to_gcs_batch125 >> upload_openslr_data_to_gcs_batch126 >> upload_openslr_data_to_gcs_batch127 >> upload_openslr_data_to_gcs_batch128 >> upload_openslr_data_to_gcs_batch129 >> upload_openslr_data_to_gcs_batch130 >> upload_openslr_data_to_gcs_batch131 >> upload_openslr_data_to_gcs_batch132 >> upload_openslr_data_to_gcs_batch133 >> upload_openslr_data_to_gcs_batch134 >> upload_openslr_data_to_gcs_batch135 >> upload_openslr_data_to_gcs_batch136 >> upload_openslr_data_to_gcs_batch137"
-

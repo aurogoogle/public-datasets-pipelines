@@ -196,13 +196,15 @@ with DAG(
     # upload openslr data to GCS
     upload_openslr_data_to_gcs_batch23 = bash.BashOperator(
         task_id="upload_openslr_data_to_gcs_batch23",
-        bash_command="wget https://www.openslr.org/resources/16/Array1-08.tar.gz -O $openslr_data_dir/SLR16/Array1-08.tar.genv:\nopenslr_data_dir: /home/airflow/gcs/data/openslr/openslr\n",
+        bash_command="wget https://www.openslr.org/resources/16/Array1-08.tar.gz -O $openslr_data_dir/SLR16/Array1-08.tar.gz\n",
+        env={"openslr_data_dir": "/home/airflow/gcs/data/openslr/openslr"},
     )
 
     # upload openslr data to GCS
     upload_openslr_data_to_gcs_batch24 = bash.BashOperator(
         task_id="upload_openslr_data_to_gcs_batch24",
-        bash_command="wget https://www.openslr.org/resources/17/musan.tar.gz -O $openslr_data_dir/SLR17/musan.tar.genv:\nopenslr_data_dir: /home/airflow/gcs/data/openslr/openslr\n",
+        bash_command="wget https://www.openslr.org/resources/17/musan.tar.gz -O $openslr_data_dir/SLR17/musan.tar.gz\n",
+        env={"openslr_data_dir": "/home/airflow/gcs/data/openslr/openslr"},
     )
 
     # upload openslr data to GCS
@@ -215,7 +217,8 @@ with DAG(
     # upload openslr data to GCS
     upload_openslr_data_to_gcs_batch26 = bash.BashOperator(
         task_id="upload_openslr_data_to_gcs_batch26",
-        bash_command="wget https://www.openslr.org/resources/19/TEDLIUM_release2.tar.gz -O $openslr_data_dir/SLR19/TEDLIUM_release2.tar.genv:\nopenslr_data_dir: /home/airflow/gcs/data/openslr/openslr\n",
+        bash_command="wget https://www.openslr.org/resources/19/TEDLIUM_release2.tar.gz -O $openslr_data_dir/SLR19/TEDLIUM_release2.tar.gz\n",
+        env={"openslr_data_dir": "/home/airflow/gcs/data/openslr/openslr"},
     )
 
     # upload openslr data to GCS
