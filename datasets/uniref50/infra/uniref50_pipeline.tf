@@ -1,5 +1,5 @@
 /**
- * Copyright 2022 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,20 @@
  */
 
 
-resource "google_bigquery_dataset" "census_opportunity_atlas" {
-  dataset_id  = "census_opportunity_atlas"
+resource "google_bigquery_table" "uniref50_uniref50" {
   project     = var.project_id
-  description = "Social mobility data for every Census tract in America."
+  dataset_id  = "uniref50"
+  table_id    = "uniref50"
+  description = "The Uniref Dataset"
+  depends_on = [
+    google_bigquery_dataset.uniref50
+  ]
 }
 
-output "bigquery_dataset-census_opportunity_atlas-dataset_id" {
-  value = google_bigquery_dataset.census_opportunity_atlas.dataset_id
+output "bigquery_table-uniref50_uniref50-table_id" {
+  value = google_bigquery_table.uniref50_uniref50.table_id
+}
+
+output "bigquery_table-uniref50_uniref50-id" {
+  value = google_bigquery_table.uniref50_uniref50.id
 }

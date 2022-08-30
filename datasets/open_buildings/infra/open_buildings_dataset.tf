@@ -15,12 +15,12 @@
  */
 
 
-resource "google_bigquery_dataset" "census_opportunity_atlas" {
-  dataset_id  = "census_opportunity_atlas"
+resource "google_bigquery_dataset" "open_buildings" {
+  dataset_id  = "open_buildings"
   project     = var.project_id
-  description = "Social mobility data for every Census tract in America."
+  description = "A dataset of building footprints to support social good applications. This large-scale open dataset contains the outlines of buildings derived from high-resolution satellite imagery in order to support these types of uses. The project being based in Ghana, the current focus is on the continent of Africa."
 }
 
-output "bigquery_dataset-census_opportunity_atlas-dataset_id" {
-  value = google_bigquery_dataset.census_opportunity_atlas.dataset_id
+output "bigquery_dataset-open_buildings-dataset_id" {
+  value = google_bigquery_dataset.open_buildings.dataset_id
 }
