@@ -1,5 +1,5 @@
 /**
- * Copyright 2022 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 
 
-resource "google_bigquery_dataset" "census_opportunity_atlas" {
-  dataset_id  = "census_opportunity_atlas"
-  project     = var.project_id
-  description = "Social mobility data for every Census tract in America."
+variable "project_id" {}
+variable "bucket_name_prefix" {}
+variable "impersonating_acct" {}
+variable "region" {}
+variable "env" {}
+variable "iam_policies" {
+  default = {}
 }
 
-output "bigquery_dataset-census_opportunity_atlas-dataset_id" {
-  value = google_bigquery_dataset.census_opportunity_atlas.dataset_id
-}
