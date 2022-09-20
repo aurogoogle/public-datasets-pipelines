@@ -15,12 +15,12 @@
  */
 
 
-variable "project_id" {}
-variable "bucket_name_prefix" {}
-variable "impersonating_acct" {}
-variable "region" {}
-variable "env" {}
-variable "iam_policies" {
-  default = {}
+resource "google_bigquery_dataset" "noaa_passive_bioacoustic" {
+  dataset_id  = "noaa_passive_bioacoustic"
+  project     = var.project_id
+  description = "This dataset basically contains the metadata corresponding to the audio data files present in google cloud storage bucket gs://noaa-passive-bioacoustic/big_query_metadata/"
 }
 
+output "bigquery_dataset-noaa_passive_bioacoustic-dataset_id" {
+  value = google_bigquery_dataset.noaa_passive_bioacoustic.dataset_id
+}

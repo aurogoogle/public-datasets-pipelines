@@ -15,12 +15,12 @@
  */
 
 
-variable "project_id" {}
-variable "bucket_name_prefix" {}
-variable "impersonating_acct" {}
-variable "region" {}
-variable "env" {}
-variable "iam_policies" {
-  default = {}
+resource "google_bigquery_dataset" "_cloud_datasets" {
+  dataset_id  = "_cloud_datasets"
+  project     = var.project_id
+  description = "A dataset dedicated to Google Cloud Datasets Program and its metadata (not a public dataset)"
 }
 
+output "bigquery_dataset-_cloud_datasets-dataset_id" {
+  value = google_bigquery_dataset._cloud_datasets.dataset_id
+}
