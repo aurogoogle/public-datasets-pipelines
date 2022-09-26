@@ -1,0 +1,282 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+resources:
+
+  - type: bigquery_table
+    table_id: indicators
+    description: "Global indicator framework for the Sustainable Development Goals"
+
+dag:
+  airflow_version: 2
+  initialize:
+    dag_id: un_sdg
+    default_args:
+      owner: "Google"
+      depends_on_past: False
+      start_date: '2022-09-01'
+    max_active_runs: 1
+    schedule_interval: "@daily"
+    catchup: False
+    default_view: graph
+
+  tasks:
+    - operator: "KubernetesPodOperator"
+      description: "Run CSV transform within kubernetes pod"
+      args:
+        task_id: "un_sdg_transform_csv"
+        name: "un_sdg"
+        namespace: "composer"
+        service_account_name: "datasets"
+
+        image_pull_policy: "Always"
+        image: "{{ var.json.un_sdg.container_registry.run_csv_transform_kub }}"
+        env_vars:
+          SOURCE_URL: >-
+            ["gs://un_sdg/un_sdg_june_2018.csv"]
+          SOURCE_FILE: >-
+            ["files/data.csv"]
+          TARGET_FILE: "files/data_output.csv"
+          TARGET_GCS_BUCKET: "{{ var.value.composer_bucket }}"
+          TARGET_GCS_PATH: "data/un_sdg/indicators/data_output.csv"
+          FILE_PATH: "files/"
+          CSV_HEADERS: >-
+            ["goal",
+              "target",
+              "indicator",
+              "seriescode",
+              "seriesdescription",
+              "geoareacode",
+              "geoareaname",
+              "timeperiod",
+              "value",
+              "time_detail",
+              "source",
+              "footnote",
+              "nature",
+              "age",
+              "bounds",
+              "cities",
+              "education_level",
+              "freq",
+              "hazard_type",
+              "ihr_capacity",
+              "level_status",
+              "location",
+              "migratory_status",
+              "mode_of_transportation",
+              "name_of_international_institution",
+              "name_of_non_communicable_disease",
+              "sex",
+              "tariff_regime_status",
+              "type_of_mobile_technology",
+              "type_of_occupation",
+              "type_of_product",
+              "type_of_skill",
+              "type_of_speed",
+              "units"]
+          RENAME_MAPPINGS: >-
+            {"Goal": "goal",
+              "Target": "target",
+              "Indicator": "indicator",
+              "SeriesCode": "seriescode",
+              "SeriesDescription": "seriesdescription",
+              "GeoAreaCode": "geoareacode",
+              "GeoAreaName": "geoareaname",
+              "TimePeriod": "timeperiod",
+              "Value": "value",
+              "Time_Detail": "time_detail",
+              "Source": "source",
+              "FootNote": "footnote",
+              "Nature": "nature",
+              "[Age]": "age",
+              "[Bounds]": "bounds",
+              "[Cities]": "cities",
+              "[Education level]": "education_level",
+              "[Freq]": "freq",
+              "[Hazard type]": "hazard_type",
+              "[IHR Capacity]": "ihr_capacity",
+              "[Level/Status]": "level_status",
+              "[Location]": "location",
+              "[Migratory status]": "migratory_status",
+              "[Mode of transportation]": "mode_of_transportation",
+              "[Name of international institution]": "name_of_international_institution",
+              "[Name of non-communicable disease]": "name_of_non_communicable_disease",
+              "[Sex]": "sex",
+              "[Tariff regime (status)]": "tariff_regime_status",
+              "[Type of mobile technology]": "type_of_mobile_technology",
+              "[Type of occupation]": "type_of_occupation",
+              "[Type of product]": "type_of_product",
+              "[Type of skill]": "type_of_skill",
+              "[Type of speed]": "type_of_speed",
+              "[Units]": "units"}
+        resources:
+          request_memory: "4G"
+          request_cpu: "1"
+          request_ephemeral_storage: "10G"
+
+    - operator: "GoogleCloudStorageToBigQueryOperator"
+      description: "Task to load CSV data to a BigQuery table"
+      args:
+        task_id: "load_un_sdg_data_to_bq"
+        bucket: "{{ var.value.composer_bucket }}"
+        source_objects: ["data/un_sdg/indicators/data_output.csv"]
+        source_format: "CSV"
+        destination_project_dataset_table: "un_sdg.indicators"
+        skip_leading_rows: 1
+        allow_quoted_newlines: True
+        write_disposition: "WRITE_TRUNCATE"
+
+        schema_fields:
+          - name: "goal"
+            mode: "NULLABLE"
+            type: "INTEGER"
+            description: "High-level goal for sustainable development"
+          - name: "target"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Each goal has multiple targets. Specific data points that, when achieved, indicate substantial progress toward a goal"
+          - name: "indicator"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Quantifiable metric used to determine progress towards reaching a target. Each target has between 1 and 3 indicators"
+          - name: "seriescode"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Abbreviated string of characters for each specific indicator"
+          - name: "seriesdescription"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Full text description of indicator"
+          - name: "geoareacode"
+            mode: "NULLABLE"
+            type: "INTEGER"
+            description: "Numeric code of GeoArea"
+          - name: "geoareaname"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Full text of GeoArea. Includes countries, regions, and continents"
+          - name: "timeperiod"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Time period for which the value is relevant"
+          - name: "value"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Numeric value of GeoArea"
+          - name: "time_detail"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Time period in which the data was collected to calculate value"
+          - name: "source"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Original source of data"
+          - name: "footnote"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: "Specific details regarding data for individual observation"
+          - name: "nature"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "age"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "bounds"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "cities"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "education_level"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "freq"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "hazard_type"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "ihr_capacity"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "level_status"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "location"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "migratory_status"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "mode_of_transportation"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "name_of_international_institution"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "name_of_non_communicable_disease"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "sex"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "tariff_regime_status"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "type_of_mobile_technology"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "type_of_occupation"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "type_of_product"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "type_of_skill"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "type_of_speed"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+          - name: "units"
+            mode: "NULLABLE"
+            type: "STRING"
+            description: ""
+
+
+  graph_paths:
+    - "un_sdg_transform_csv >> load_un_sdg_data_to_bq"
