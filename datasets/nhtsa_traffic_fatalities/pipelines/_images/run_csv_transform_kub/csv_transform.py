@@ -134,7 +134,7 @@ def execute_pipeline(
             drop_table = True
         else:
             drop_table = False
-        destination_table = (pipeline_name.split("-")[1]).lower() + f"_{process_year}"
+        destination_table = (pipeline_name.split("-")[1]).lower().strip() + f"_{process_year}"
         table_exists = create_dest_table(
             project_id=project_id,
             dataset_id=dataset_id,
