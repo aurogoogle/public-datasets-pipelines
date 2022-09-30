@@ -25,7 +25,6 @@ import subprocess
 import typing
 
 import pandas as pd
-import requests
 from google.cloud import storage
 
 
@@ -57,88 +56,18 @@ def main(
     logging.info("Transform: Rename columns...")
     rename_headers(df, rename_mappings)
 
-    # logging.info("Transform: Cleaning up column location_description...")
+    logging.info("Transform: Replacing values...")
+    df["footnote"] = df["footnote"].apply(lambda x: "-" if str(x) == "nan" else str(x))
+    df["footnote"] = df["footnote"].apply(reg_exp_tranformation, args=(r"\n", " "))
+    df["source"] = df["source"].apply(lambda x: "-" if str(x) == "nan" else str(x))
+    df["source"] = df["source"].apply(reg_exp_tranformation, args=(r"\n", " "))
+    df["seriesdescription"] = df["seriesdescription"].apply(lambda x: "-" if str(x) == "nan" else str(x))
+    df["seriesdescription"] = df["seriesdescription"].apply(reg_exp_tranformation, args=(r"\n", " "))
 
-    # # Removing two consecutive white soaces from location_description column
-    # df["location_description"] = (
-    #     df["location_description"]
-    #     .astype("|S")
-    #     .str.decode("utf-8")
-    #     .apply(reg_exp_tranformation, args=(r"\s{2,}", ""))
-    # )
-
-    # logging.info("Transform: Converting to integer string...")
-    # df["zipcode"] = df["zipcode"].apply(convert_to_integer_string)
-    # df["council_district_code"] = df["council_district_code"].apply(
-    #     convert_to_integer_string
-    # )
-    # df["x_coordinate"] = df["x_coordinate"].apply(convert_to_integer_string)
-    # df["y_coordinate"] = df["y_coordinate"].apply(convert_to_integer_string)
-
-    # logging.info("Transform: Creating a new column - address...")
-    # df["address"] = df["temp_address"]
-    # df["address"] = (
-    #     df["address"]
-    #     .fillna(
-    #         df["location_description"].replace("nan", "")
-    #         + " Austin, TX "
-    #         + df["zipcode"]
-    #     )
-    #     .str.strip()
-    # )
-
-    # logging.info("Transform: Converting date format...")
-    # df["timestamp"] = df["timestamp"].apply(convert_dt_format)
-    # df["clearance_date"] = df["clearance_date"].apply(convert_dt_format)
-
-    # logging.info("Transform: Creating a new column - year...")
-    # df["year"] = df["timestamp"].apply(extract_year)
-
-    # logging.info("Transform: Replacing values...")
-    # df["address"] = df["address"].apply(reg_exp_tranformation, args=(r"\n", " "))
-    # df = df.replace(
-    #     to_replace={
-    #         "clearance_status": {
-    #             "C": "Cleared by Arrest",
-    #             "O": "Cleared by Exception",
-    #             "N": "Not cleared",
-    #         },
-    #         "address": {"sAustin": "Austin"},
-    #     }
-    # )
-
-    # logging.info("Transform: Converting exponential values to integer...")
-    # df["unique_key"] = (
-    #     df["unique_key"]
-    #     .apply(convert_exp_to_float)
-    #     .astype(float)
-    #     .apply(convert_to_integer_string)
-    # )
-
-    # logging.info("Transform: Creating a new column - latitude...")
-    # # If address is 'Austin, TX (30.264979, -97.746598)' below code will extract
-    # # value 30.264979 from the address and assign it to latitude column
-    # df["latitude"] = (
-    #     df["address"]
-    #     .apply(search_string)
-    #     .apply(extract_lat_long, args=[r".*\((\d+\.\d+),.*"])
-    # )
-
-    # logging.info("Transform: Creating a new column - longitude...")
-    # # If address is 'Austin, TX (30.264979, -97.746598)' below code will extract
-    # # value -97.746598 from the address and assign it to longitude column
-    # df["longitude"] = (
-    #     df["address"]
-    #     .apply(search_string)
-    #     .apply(extract_lat_long, args=[r".*(\-\d+\.\d+)\)"])
-    # )
-
-    # logging.info("Transform: Creating a new column - location...")
-    # df["location"] = "(" + df["latitude"] + "," + df["longitude"] + ")"
-    # df["location"] = df["location"].replace("(,)", "")
-
-    # logging.info("Transform: Dropping column - temp_address...")
-    # delete_column(df, "temp_address")
+    logging.info("Transform: Converting to integer string...")
+    df["target"] = df["target"].apply(lambda x: str(x))
+    df["units"] = df["units"].apply(lambda x: str(x))
+    df["type_of_speed"] = df["type_of_speed"].apply(lambda x: str(x))
 
     logging.info("Transform: Reordering headers...")
     df = df[headers]
@@ -248,7 +177,6 @@ def save_to_new_file(df: pd.DataFrame, file_path: str) -> None:
 
 if __name__ == "__main__":
     logging.getLogger().setLevel(logging.INFO)
-
     main(
         source_url=json.loads(os.environ["SOURCE_URL"]),
         source_file=json.loads(os.environ["SOURCE_FILE"]),

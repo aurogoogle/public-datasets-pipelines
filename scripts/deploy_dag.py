@@ -46,10 +46,10 @@ def main(
     if composer_bucket is None:
         composer_bucket = get_composer_bucket(composer_env, composer_region)
 
-    print("\n========== AIRFLOW VARIABLES ==========")
-    check_and_configure_airflow_variables(
-        env_path, dataset_id, composer_env, composer_bucket, composer_region
-    )
+    # print("\n========== AIRFLOW VARIABLES ==========")
+    # check_and_configure_airflow_variables(
+    #     env_path, dataset_id, composer_env, composer_bucket, composer_region
+    # )
 
     print("========== AIRFLOW DAGS ==========")
     if pipeline:
